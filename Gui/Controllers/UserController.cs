@@ -39,14 +39,14 @@ namespace Gui.Controllers
             return new { user = user, message = "success" };
         }
         //login
-        [HttpPost("/api/[controller]/LogIn/{password}/{email}")]
-        public object LogIn(string password, string email)
+        [HttpPost("/api/[controller]/LogIn")]
+        public ActionResult LogIn(UserLogin userInput)
         {
-            UserDto user = userBll.LoginUser(email, password) ;
-            if (user != null) Console.WriteLine(user.Name);
+           UserDto user = userBll.LoginUser(userInput.Email, userInput.Password);
             if (user == null)
-                return new { user = user, message = "faild" };
-            return new { user = user, message = "succses" };
+                return BadRequest("user is not found");// { user = user, message = "faild" };
+            return Ok(user);
+            // return Created(user);
         }
         //update status
         [HttpPut("/api/[controller]/UpDateStatusById/{id}")]
