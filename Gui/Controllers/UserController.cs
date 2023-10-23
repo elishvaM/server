@@ -44,7 +44,7 @@ namespace Gui.Controllers
         {
            UserDto user = userBll.LoginUser(userInput.Email, userInput.Password);
             if (user == null)
-                return BadRequest("user is not found");// { user = user, message = "faild" };
+                return BadRequest("משתמש אינו קיים");// { user = user, message = "faild" };
             return Ok(user);
             // return Created(user);
         }
