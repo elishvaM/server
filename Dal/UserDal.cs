@@ -38,10 +38,10 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
 
-        public void UpDateStatusById(int id)
+        public void UpDateStatusById(User user)
         {
-            var u = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == id);
-            u.Status = !u.Status;
+            //var u = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == id);
+            user.Status = !user.Status;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
         public void UpDateUser(User user)

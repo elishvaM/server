@@ -20,6 +20,6 @@ namespace Bll
         //get user by id
         UserDto GetUserById(int id);
         //change status
-        void UpDateStatusById(int id);
+        void UpDateStatusById(UserDto user);
     }
 }

@@ -49,10 +49,10 @@ namespace Gui.Controllers
             // return Created(user);
         }
         //update status
-        [HttpPut("/api/[controller]/UpDateStatusById/{id}")]
-        public void UpDateStatusById(int id)
+        [HttpPut("/api/[controller]/UpDateStatusById/")]
+        public void UpDateStatusById(UserDto user)
         {
-            userBll.UpDateStatusById(id);
+            userBll.UpDateStatusById(user);
         }
         [HttpPut("/api/[controller]/UpDateUser")]
         public void UpDateUser([FromBody] UserDto user)
