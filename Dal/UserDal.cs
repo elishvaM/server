@@ -25,10 +25,13 @@ namespace Dal
         }
         public User LoginUser(string email, string password)
         {
+
             return this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }
         public void SignInUser(User user)
         {
+
+            user.Status = true;
             //change
             this.ElishevaMHadasBListsTripContext.Users.Add(user);
             //svae
