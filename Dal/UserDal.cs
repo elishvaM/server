@@ -40,9 +40,12 @@ namespace Dal
 
         public void UpDateStatusById(User user)
         {
-            if (user.Status) user.Status = false;
-            else user.Status = true;
-            user.Status = !user.Status;
+            //דרך אחת
+            //if (user.Status) user.Status = false;
+            //else user.Status = true;
+            //דרך שניה
+            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == user.Id);
+            foundUser.Status = !foundUser.Status;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
         public void UpDateUser(User user)
