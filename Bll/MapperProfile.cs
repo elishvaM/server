@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bll
 {
-    public  class MapperProfile:Profile
+    public class MapperProfile:Profile
     {
         public MapperProfile()
         {
@@ -17,6 +17,12 @@ namespace Bll
             CreateMap<UserDto, User>();
             CreateMap<Attraction, AttractionDto>().ForMember(x=>x.CityName,y=>y.MapFrom(t=>t.Address.City));
             CreateMap<AttractionDto, Attraction>();
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
+            CreateMap<SavedAttraction, SavedAttractionDto>();
+            CreateMap<SavedAttractionDto, SavedAttraction>();
+            CreateMap<AttractionList, AttractionListDto>();
+            CreateMap<AttractionListDto, AttractionList>();
             //כאן יתווספו כל הטבלאות
         }
     }

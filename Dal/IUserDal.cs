@@ -10,7 +10,7 @@ namespace Dal
   public interface IUserDal
     {
         //thes the functions that will be excueted on the db
-
+        
         //sign user
         void SignInUser(User user);
         //login user

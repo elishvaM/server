@@ -15,6 +15,12 @@ builder.Services.AddScoped<IUserDal, UserDal>();
 builder.Services.AddScoped<IUserBll, UserBll>();
 builder.Services.AddScoped<IAttractionBll, AttractionBll>();
 builder.Services.AddScoped<IAttractionDal, AttractionDal>();
+builder.Services.AddScoped<IProductBll, ProductBll>();
+builder.Services.AddScoped<IProductDal, ProductDal>();
+builder.Services.AddScoped<ISavedAttractionBll, SavedAttractionBll>();
+builder.Services.AddScoped<ISavedAttractionDal, SavedAttractionDal>();
+builder.Services.AddScoped<IAttractionListBll, AttractionListBll>();
+builder.Services.AddScoped<IAttractionListDal, AttractionListDal>();
 builder.Services.AddHttpContextAccessor();
 //הוספת ה database
 builder.Services.AddDbContext<ElishevaMHadasBListsTripContext>();
