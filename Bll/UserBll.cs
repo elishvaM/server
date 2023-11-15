@@ -36,9 +36,10 @@ namespace Bll
             // ולכן הצטרכנו להמירו user מקבל אובייקט מסוג  userdal 
             this.userDal.SignInUser(mapper.Map<User>(user));
         }
-        public void UpDateStatusById(int id)
+
+        public void UpDateStatusById(UserDto user)
         {
-            this.userDal.UpDateStatusById(id);
+            this.userDal.UpDateStatusById(mapper.Map<User>(user));
         }
         public void UpDateUser(UserDto user)
         {
@@ -48,3 +49,4 @@ namespace Bll
         }
     }
 }
+
