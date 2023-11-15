@@ -9,6 +9,9 @@ namespace Dal
 {
     public interface ISavedAttractionDal
     {
+        //?? לשנות לאוביקט
         List<SavedAttraction> GetSavedAttractionByUserId(int userId);
+        void AddLovedAttraction (SavedAttraction lovedAttraction);
+        void RemoveLovedAttraction (SavedAttraction lovedAttractionId);
     }
 }

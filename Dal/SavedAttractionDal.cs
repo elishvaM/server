@@ -14,9 +14,24 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext = context;
         }
+
+        public void AddLovedAttraction(SavedAttraction lovedAttraction)
+        {
+            ElishevaMHadasBListsTripContext.SavedAttractions.Add(lovedAttraction);
+            this.ElishevaMHadasBListsTripContext.SaveChanges();
+        }
+
         public List<SavedAttraction> GetSavedAttractionByUserId(int userId)
         {
-            return ElishevaMHadasBListsTripContext.SavedAttractions.Where(x => x.UserId == userId).ToList(); 
+            return ElishevaMHadasBListsTripContext.SavedAttractions.Where(x => x.UserId == userId).ToList();
+        }
+
+        public void RemoveLovedAttraction(SavedAttraction lovedAttractionId)
+        {
+            SavedAttraction foundAttraction = ElishevaMHadasBListsTripContext.SavedAttractions.FirstOrDefault(x =>
+                                              x.AttractionId == lovedAttractionId.AttractionId && x.UserId == lovedAttractionId.UserId);
+            ElishevaMHadasBListsTripContext.SavedAttractions.Remove(foundAttraction);
+            ElishevaMHadasBListsTripContext.SaveChanges();
         }
     }
 }

@@ -25,20 +25,27 @@ namespace Dal
         }
         public User LoginUser(string email, string password)
         {
+
             return this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }
         public void SignInUser(User user)
         {
+
+            user.Status = true;
             //change
             this.ElishevaMHadasBListsTripContext.Users.Add(user);
             //svae
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
 
-        public void UpDateStatusById(int id)
+        public void UpDateStatusById(User user)
         {
-            var u = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == id);
-            u.Status = !u.Status;
+            //דרך אחת
+            //if (user.Status) user.Status = false;
+            //else user.Status = true;
+            //דרך שניה
+            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == user.Id);
+            foundUser.Status = !foundUser.Status;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
         public void UpDateUser(User user)

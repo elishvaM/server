@@ -22,6 +22,6 @@ namespace Dal
         //get user by id
         User GetUserById(int id);
         //change status
-        void UpDateStatusById(int id); 
+        void UpDateStatusById(User user); 
     }
 }

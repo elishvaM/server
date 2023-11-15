@@ -1,4 +1,5 @@
 ﻿using Bll;
+using Dal;
 using Dto;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,16 +30,17 @@ namespace Gui.Controllers
         //    return "value";
         //}
 
-        // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("/api/[controller]/AddLovedAttraction")]
+        public void AddLovedAttraction(SavedAttractionDto lovedAttrraction)
         {
+            savedAttractionBll.AddLovedAttraction(lovedAttrraction);
         }
-
         // PUT api/<ValuesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("/api/[controller]/RemoveLovedAttraction")]
+        public void RemoveLovedAttraction(SavedAttractionDto lovedAttrraction)
         {
+            Console.WriteLine("cameee");
+            savedAttractionBll.RemoveLovedAttraction(lovedAttrraction);
         }
 
         // DELETE api/<ValuesController>/5

@@ -11,5 +11,8 @@ namespace Bll
     public interface ISavedAttractionBll
     {
         List<SavedAttractionDto> GetSavedAttractionByUserId(int userId);
+        void AddLovedAttraction(SavedAttractionDto lovedaAttraction);
+        void RemoveLovedAttraction(SavedAttractionDto lovedaAttraction);
+
     }
 }
