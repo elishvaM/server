@@ -23,6 +23,8 @@ namespace Bll
             CreateMap<SavedAttractionDto, SavedAttraction>();
             CreateMap<AttractionList, AttractionListDto>();
             CreateMap<AttractionListDto, AttractionList>();
+            CreateMap<TripList, TripListDto>();
+            CreateMap<TripListDto, TripList>();
             //כאן יתווספו כל הטבלאות
         }
     }
