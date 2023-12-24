@@ -28,8 +28,6 @@ namespace Bll
 
         public List<SavedAttractionDto> GetSavedAttractionByUserId(int userId)
         {
-            userId = 8;
-            Console.WriteLine("PPP");
             Console.WriteLine(userId);
             return mapper.Map<List<SavedAttractionDto>>(savedAttractionDal.GetSavedAttractionByUserId(userId));
         }

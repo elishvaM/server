@@ -60,7 +60,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 //<<<<<<< HEAD
          =>//optionsBuilder.UseSqlServer("Data Source=DESKTOP-H7G2T2R\\SQLEXPRESS;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 //=======
-         optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+         optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 //>>>>>>> 0720a6a70d23ffbb6136d5f6c80be1f29329bca9
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

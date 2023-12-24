@@ -10,6 +10,10 @@ namespace Dal
     public class TripListDal : ITripListDal
     {
         private readonly ElishevaMHadasBListsTripContext ElishevaMHadasBListsTripContext;
+        public TripListDal(ElishevaMHadasBListsTripContext context)
+        {
+            this.ElishevaMHadasBListsTripContext = context;
+        }
         public void Add(TripList tripList)
         {
             ElishevaMHadasBListsTripContext.TripLists.Add(tripList);

@@ -17,7 +17,7 @@ namespace Gui.Controllers
             this.savedAttractionBll = savedAttractionBll;
         }
 
-        [HttpGet("/api/[controller]/GetSavedAttractionByUserId")]
+        [HttpGet("/api/[controller]/GetSavedAttractionByUserId/{userId}")]
         public List<SavedAttractionDto> GetSavedAttractionByUserId(int userId)
         {
             return savedAttractionBll.GetSavedAttractionByUserId(userId);
