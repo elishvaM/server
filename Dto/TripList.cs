@@ -9,7 +9,7 @@ public partial class TripListDto
 
     public int UserId { get; set; }
 
-    public int? Name { get; set; }
+    public string? Name { get; set; }
 
     public DateTime AddingDate { get; set; }
 

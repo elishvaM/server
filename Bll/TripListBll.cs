@@ -28,9 +28,10 @@ namespace Bll
             this.tripListDal.Delete(mapper.Map<TripList>(tripList));
         }
 
-        public List<TripListDto> GetAll()
+        public List<TripListDto> GetAll(int userId)
         {
-            return mapper.Map<List<TripListDto>>(this.tripListDal.GetAll());
+
+            return mapper.Map<List<TripListDto>>(this.tripListDal.GetAll(userId));
         }
 
         public void Update(TripListDto tripList)

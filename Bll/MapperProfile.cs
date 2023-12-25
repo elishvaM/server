@@ -15,7 +15,7 @@ namespace Bll
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
-            CreateMap<Attraction, AttractionDto>().ForMember(x=>x.CityName,y=>y.MapFrom(t=>t.Address.City));
+            CreateMap<Attraction, AttractionDto>().ForMember(x => x.CityName, y => y.MapFrom(t => t.Address.City));
             CreateMap<AttractionDto, Attraction>();
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();

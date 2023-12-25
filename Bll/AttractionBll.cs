@@ -28,7 +28,11 @@ namespace Bll
         {
             this.attractionDal.Add(mapper.Map<Attraction>(attraction));
         }
-        public List<AttractionDto> GetAll()
+        //public List<AttractionDto> GetAll()
+        //{
+        //    return mapper.Map<List<AttractionDto>>(this.attractionDal.GetAll());
+        //}
+        public object GetAll()
         {
             return mapper.Map<List<AttractionDto>>(this.attractionDal.GetAll());
         }

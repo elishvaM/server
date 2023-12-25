@@ -26,9 +26,9 @@ namespace Dal
             ElishevaMHadasBListsTripContext.SaveChanges();
         }
 
-        public List<TripList> GetAll()
+        public List<TripList> GetAll(int userId)
         {
-            return ElishevaMHadasBListsTripContext.TripLists.ToList();
+            return ElishevaMHadasBListsTripContext.TripLists.Where(x=>x.UserId == userId).ToList();
         }
 
         public void Update(TripList tripList)

@@ -9,7 +9,8 @@ namespace Dal
 {
     public interface IAttractionDal
     {
-        List<Attraction> GetAll();
+        // List<Attraction> GetAll();
+        object GetAll();
         Attraction GetById(int id);
         void Add(Attraction attraction);
         void Update(Attraction attraction);

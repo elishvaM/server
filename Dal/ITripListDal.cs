@@ -8,7 +8,7 @@ namespace Dal
 {
     public interface ITripListDal
     {
-        List<TripList> GetAll();
+        List<TripList> GetAll(int userId);
         void Add(TripList tripList);
         void Update(TripList tripList);
         void Delete(TripList tripList);

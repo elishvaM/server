@@ -17,7 +17,7 @@ namespace Gui.Controllers
         } 
 
         [HttpGet("/api/[controller]/GetAll")]
-        public List<AttractionDto> GetAll()
+        public object GetAll()
         {
             return attractionBll.GetAll();
         }

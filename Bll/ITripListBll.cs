@@ -8,7 +8,7 @@ namespace Bll
 {
     public interface ITripListBll
     {
-        List<TripListDto> GetAll();
+        List<TripListDto> GetAll(int userId);
 
         void Add(TripListDto tripList);
 

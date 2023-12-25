@@ -8,7 +8,8 @@ namespace Bll
 {
     public interface IAttractionBll
     {
-        List<AttractionDto> GetAll();
+        //List<AttractionDto> GetAll();
+       object GetAll();
         AttractionDto GetById(int id);
         void Add(AttractionDto attraction);
         void Update(AttractionDto attraction);

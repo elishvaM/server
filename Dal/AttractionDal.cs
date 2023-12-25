@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entity;
+using Microsoft.EntityFrameworkCore;
 namespace Dal
 {
     public class AttractionDal : IAttractionDal
@@ -18,9 +19,19 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
         }
-        public List<Attraction> GetAll()
+        //public List<Attraction> GetAll() { }
+        public object GetAll()
         {
-            return this.ElishevaMHadasBListsTripContext.Attractions.ToList();
+            var query = this.ElishevaMHadasBListsTripContext.Attractions
+                        .Include(x => x.Address)
+                         .ToList();
+
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Address.City + " " + item.Name);
+            }
+            return query;
+            //this.ElishevaMHadasBListsTripContext.Attractions.ToList();
         }
 
         public Attraction GetById(int id)
@@ -42,7 +53,7 @@ namespace Dal
         public void UpdateStatusById(int id)
         {
             var a = this.ElishevaMHadasBListsTripContext.Attractions.FirstOrDefault(x => x.Id == id);
-            a.IsConfirm = ! a.IsConfirm;
+            a.IsConfirm = !a.IsConfirm;
         }
     }
 }
