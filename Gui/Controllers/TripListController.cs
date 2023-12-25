@@ -16,7 +16,7 @@ namespace Gui.Controllers
             this.tripListBll = tripListBll;
         }
         // GET: api/<TripListController>
-        [HttpGet("/api/[controller]/GetAll/{id}")]
+        [HttpGet("/api/[controller]/GetAll/{userId}")]
         public List<TripListDto> GetAll(int userId) { 
             return tripListBll.GetAll(userId);
         }
