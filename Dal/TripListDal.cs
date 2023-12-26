@@ -28,8 +28,9 @@ namespace Dal
 
         public List<TripList> GetAll(int userId)
         {
-            return ElishevaMHadasBListsTripContext.TripLists.Where(x=>x.UserId == userId).ToList();
+            return ElishevaMHadasBListsTripContext.TripLists.Where(x => x.UserId == userId).ToList();
         }
+
 
         public void Update(TripList tripList)
         {
