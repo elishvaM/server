@@ -30,7 +30,7 @@ namespace Dal
         }
         public void SignInUser(User user)
         {
-
+            user.UserTypeId = 1;
             user.Status = true;
             //change
             this.ElishevaMHadasBListsTripContext.Users.Add(user);

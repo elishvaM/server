@@ -33,10 +33,12 @@ namespace Gui.Controllers
         }
         //signin
         [HttpPost("/api/[controller]/SignIn")]
-        public object SignIn([FromBody] UserDto user)
+        public ActionResult SignIn([FromBody] UserDto user)
         {
+            if (userBll.GetAllUsers().Contains(user))
+                return BadRequest("משתמש זה קיים");
             userBll.SignInUser(user);
-            return new { user = user, message = "success" };
+            return Ok(user);
         }
         //login
         [HttpPost("/api/[controller]/LogIn")]
