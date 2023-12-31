@@ -15,7 +15,8 @@ namespace Bll
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
-            CreateMap<Attraction, AttractionDto>().ForMember(x => x.CityName, y => y.MapFrom(t => t.Address.City));
+            CreateMap<Attraction, AttractionDto>().ForMember(x => x.LandName, y => y.MapFrom(t => t.Address.Land))
+                .ForMember(x => x.CityName, y => y.MapFrom(t => t.Address.City));
             CreateMap<AttractionDto, Attraction>();
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
@@ -25,6 +26,8 @@ namespace Bll
             CreateMap<AttractionListDto, AttractionList>();
             CreateMap<TripList, TripListDto>();
             CreateMap<TripListDto, TripList>();
+            CreateMap<Address, AddressDto>();
+            CreateMap<AddressDto, Address>();
             //כאן יתווספו כל הטבלאות
         }
     }

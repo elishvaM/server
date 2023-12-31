@@ -10,7 +10,7 @@ namespace Bll
     { //thes the functions that will be excueted on the db
 
         //sign user
-        void SignInUser(UserDto user);
+        void SignInUser(FullUser user);
         //login user
         UserDto LoginUser(string mail, string password);
         //get all users

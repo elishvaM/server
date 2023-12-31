@@ -26,6 +26,11 @@ public partial class AttractionDto
     public bool Status { get; set; }
 
     public int PersonStateId { get; set; }
+    public AddressDto Address { get; set; }
 
     public string CityName { get; set; }
+ 
+    public string StreetName { get; set; }
+
+    public string LandName { get; set; }
 }

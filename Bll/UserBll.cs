@@ -31,7 +31,7 @@ namespace Bll
         {
             return mapper.Map<UserDto>(this.userDal.LoginUser(mail, password));
         }
-        public void SignInUser(UserDto user)//ללא קשרי גומלין האובייקט עצמו
+        public void SignInUser(FullUser user)//ללא קשרי גומלין האובייקט עצמו
         {
             // ולכן הצטרכנו להמירו user מקבל אובייקט מסוג  userdal 
             this.userDal.SignInUser(mapper.Map<User>(user));

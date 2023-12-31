@@ -19,19 +19,9 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
         }
-        //public List<Attraction> GetAll() { }
-        public object GetAll()
+        public List<Attraction> GetAll()
         {
-            var query = this.ElishevaMHadasBListsTripContext.Attractions
-                        .Include(x => x.Address)
-                         .ToList();
-
-            foreach (var item in query)
-            {
-                Console.WriteLine(item.Address.City + " " + item.Name);
-            }
-            return query;
-            //this.ElishevaMHadasBListsTripContext.Attractions.ToList();
+           return this.ElishevaMHadasBListsTripContext.Attractions.ToList();
         }
 
         public Attraction GetById(int id)
