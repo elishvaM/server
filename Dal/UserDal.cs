@@ -58,5 +58,11 @@ namespace Dal
             u.Name = user.Name;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
+        public void UpDateTypeById(User user)
+        {
+            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == user.Id);
+            foundUser.Status = !foundUser.Status;
+            this.ElishevaMHadasBListsTripContext.SaveChanges();
+        }
     }
 }
