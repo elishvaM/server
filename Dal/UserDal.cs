@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Dal
         }
         public List<User> GetAllUsers()
         {
-            return this.ElishevaMHadasBListsTripContext.Users.ToList();
+            return this.ElishevaMHadasBListsTripContext.Users.Include(x => x.UserType).ToList();
         }
         public User GetUserById(int id)
         {
@@ -58,10 +59,10 @@ namespace Dal
             u.Name = user.Name;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
-        public void UpDateTypeById(User user)
+        public void UpDateType(int id, int typeId)
         {
-            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == user.Id);
-            foundUser.Status = !foundUser.Status;
+            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Id == id);
+            foundUser.UserTypeId = typeId;
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
     }

@@ -32,7 +32,7 @@ namespace Gui.Controllers
 
         [HttpPost("/api/[controller]/AddLovedAttraction")]
         public void AddLovedAttraction(SavedAttractionDto lovedAttrraction)
-        {
+      {
             savedAttractionBll.AddLovedAttraction(lovedAttrraction);
         }
         // PUT api/<ValuesController>/5

@@ -9,14 +9,18 @@ using System.Threading.Tasks;
 
 namespace Bll
 {
-    public class MapperProfile:Profile
+    public class MapperProfile : Profile
     {
         public MapperProfile()
         {
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserDto>()
+              .ForMember(u => u.Type, y=> y.MapFrom(t => t.UserType.Type));
+            CreateMap<FullUser, User>();
             CreateMap<UserDto, User>();
-            CreateMap<Attraction, AttractionDto>().ForMember(x => x.LandName, y => y.MapFrom(t => t.Address.Land))
-                .ForMember(x => x.CityName, y => y.MapFrom(t => t.Address.City));
+
+            CreateMap<Attraction, AttractionDto>();
+            //.ForMember(x => x.LandName, y => y.MapFrom(t => t.Address.Land+))
+            //.ForMember(x => x.CityName, y => y.MapFrom(t => t.Address.City));
             CreateMap<AttractionDto, Attraction>();
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
@@ -24,7 +28,8 @@ namespace Bll
             CreateMap<SavedAttractionDto, SavedAttraction>();
             CreateMap<AttractionList, AttractionListDto>();
             CreateMap<AttractionListDto, AttractionList>();
-            CreateMap<TripList, TripListDto>();
+            CreateMap<TripList, TripListDto>()
+                 .ForMember(u => u.CounAtraction, y => y.MapFrom(t => t.AttractionLists.Count())); 
             CreateMap<TripListDto, TripList>();
             CreateMap<Address, AddressDto>();
             CreateMap<AddressDto, Address>();

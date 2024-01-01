@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Dal
 
         public List<TripList> GetAll(int userId)
         {
-            return ElishevaMHadasBListsTripContext.TripLists.Where(x => x.UserId == userId).ToList();
+            return ElishevaMHadasBListsTripContext.TripLists.Where(x => x.UserId == userId).Include(x => x.AttractionLists).ToList();
         }
 
 

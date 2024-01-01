@@ -9,15 +9,21 @@ public partial class UserLogin
     public string Email { get; set; } = "";
 
 }
-public partial class FullUser:UserDto
+public partial class FullUser : UserDto
 {
     public string Password { get; set; } = "";
 
 }
-public partial class UserDto 
+public partial class UserAndType
 {
     public int Id { get; set; }
 
+    public int TypeId { get; set; }
+}
+public partial class UserDto
+{
+    public int Id { get; set; }
+    
     public string Name { get; set; } = "";
 
     public string Phone { get; set; } = "";
@@ -26,8 +32,10 @@ public partial class UserDto
 
     public DateTime DateBorn { get; set; }
 
-    public int UserTypeId { get; set; }
+    public int UserTypeId { get; set; } = 1;
 
-    public bool Status { get; set; }
+    public bool Status { get; set; }=true;
 
+    //לא עובד
+    public string Type { get; set; } = "";
 }

@@ -21,7 +21,7 @@ namespace Dal
         }
         public List<Attraction> GetAll()
         {
-           return this.ElishevaMHadasBListsTripContext.Attractions.ToList();
+           return this.ElishevaMHadasBListsTripContext.Attractions.Include(x=>x.Address).ToList();
         }
 
         public Attraction GetById(int id)

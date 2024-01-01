@@ -44,11 +44,10 @@ namespace Gui.Controllers
         [HttpPost("/api/[controller]/LogIn")]
         public ActionResult LogIn(UserLogin userInput)
         {
-           UserDto user = userBll.LoginUser(userInput.Email, userInput.Password);
+            UserDto user = userBll.LoginUser(userInput.Email, userInput.Password);
             if (user == null)
                 return BadRequest("פרטיך שגויים, אנא נסה שנית");// { user = user, message = "faild" };
             return Ok(user);
-            // return Created(user);
         }
         //update status
         [HttpPut("/api/[controller]/UpDateStatusById")]
@@ -56,10 +55,18 @@ namespace Gui.Controllers
         {
             userBll.UpDateStatusById(user);
         }
+        //update user
         [HttpPut("/api/[controller]/UpDateUser")]
         public void UpDateUser([FromBody] UserDto user)
         {
             userBll.UpDateUser(user);
+        }
+        //update type
+        [HttpPost("/api/[controller]/UpDateType")]
+        public ActionResult UpDateType([FromBody] UserAndType user)
+        {
+            userBll.UpDateType(user.Id, user.TypeId);
+            return Ok("שינוי בוצע בהצלחה");
         }
     }
 }

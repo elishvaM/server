@@ -21,5 +21,7 @@ namespace Bll
         UserDto GetUserById(int id);
         //change status
         void UpDateStatusById(UserDto user);
+        //change type
+        void UpDateType(int id, int typeId);
     }
 }
