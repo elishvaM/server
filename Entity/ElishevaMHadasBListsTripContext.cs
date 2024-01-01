@@ -59,7 +59,8 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
 //<<<<<<< HEAD
          =>//optionsBuilder.UseSqlServer("Data Source=DESKTOP-H7G2T2R\\SQLEXPRESS;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-//=======
+           //=======
+//Connect Timeout=200
          optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=200;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 //>>>>>>> 0720a6a70d23ffbb6136d5f6c80be1f29329bca9
 

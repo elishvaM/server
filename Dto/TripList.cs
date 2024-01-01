@@ -16,6 +16,12 @@ public partial class TripListDto
     public DateTime BackingDate { get; set; }
 
     public DateTime TravelingDate { get; set; }
+
     public int CounAtraction { get; set; }
+
+    //קישור לרשימות אטרקמיות הטיול
+    public List<AttractionListDto> AttractionList { get; set; }
+    
+
 
 }
