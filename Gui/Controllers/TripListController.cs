@@ -25,9 +25,8 @@ namespace Gui.Controllers
         [HttpPost("/api/[controller]/Add")]
         public ActionResult Add([FromBody] TripListDto tripList)
         {
-            ///??? check
-            tripListBll.Add(tripList);
-            return Ok(tripList);
+            TripListDto t = tripListBll.Add(tripList);
+            return Ok(t);
         }
 
         [HttpPost("/api/[controller]/Update")]
@@ -37,9 +36,9 @@ namespace Gui.Controllers
         }
         ///??? check
         [HttpPost("/api/[controller]/Delete")]
-        public void Delete([FromBody] TripListDto tripLis)
+        public void Delete([FromBody] TripListDto tripList)
         {
-            tripListBll.Delete(tripLis);
+            tripListBll.Delete(tripList);
         }
     }
 }

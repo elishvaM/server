@@ -18,9 +18,9 @@ namespace Bll
             this.tripListDal = tripListDal;
             this.mapper = mapper;
         }
-        public void Add(TripListDto tripList)
+        public TripListDto Add(TripListDto tripList)
         {
-            this.tripListDal.Add(mapper.Map<TripList>(tripList));
+            return mapper.Map<TripListDto>(this.tripListDal.Add(mapper.Map<TripList>(tripList)));
         }
 
         public void Delete(TripListDto tripList)

@@ -10,7 +10,7 @@ namespace Bll
     {
         List<TripListDto> GetAll(int userId);
 
-        void Add(TripListDto tripList);
+        TripListDto Add(TripListDto tripList);
 
         void Update(TripListDto tripList);
 

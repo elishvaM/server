@@ -15,10 +15,13 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext = context;
         }
-        public void Add(TripList tripList)
+        public TripList Add(TripList tripList)
         {
+            tripList.AttractionLists = null;
+            tripList.AddingDate = DateTime.Now; 
             ElishevaMHadasBListsTripContext.TripLists.Add(tripList);
             ElishevaMHadasBListsTripContext.SaveChanges();
+            return tripList;
         }
 
         public void Delete(TripList tripList)
