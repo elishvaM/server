@@ -18,7 +18,7 @@ namespace Dal
         public TripList Add(TripList tripList)
         {
             tripList.AttractionLists = null;
-            tripList.AddingDate = DateTime.Now; 
+            tripList.AddingDate = DateTime.Now;
             ElishevaMHadasBListsTripContext.TripLists.Add(tripList);
             ElishevaMHadasBListsTripContext.SaveChanges();
             return tripList;
