@@ -32,6 +32,8 @@ namespace Bll
             CreateMap<TripListDto, TripList>();
             CreateMap<Address, AddressDto>();
             CreateMap<AddressDto, Address>();
+            CreateMap<Comment, CommentDto>();
+            CreateMap<CommentDto, Comment>();
             //כאן יתווספו כל הטבלאות
         }
     }

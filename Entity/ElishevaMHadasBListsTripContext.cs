@@ -45,6 +45,8 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
     public virtual DbSet<SavedAttraction> SavedAttractions { get; set; }
 
+    public virtual DbSet<Status> Statuses { get; set; }
+
     public virtual DbSet<StatusProduct> StatusProducts { get; set; }
 
     public virtual DbSet<StorageType> StorageTypes { get; set; }
@@ -57,12 +59,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//<<<<<<< HEAD
-         =>//optionsBuilder.UseSqlServer("Data Source=DESKTOP-H7G2T2R\\SQLEXPRESS;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-           //=======
-//Connect Timeout=200
-         optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=200;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-//>>>>>>> 0720a6a70d23ffbb6136d5f6c80be1f29329bca9
+        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=200;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -81,8 +78,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("Attraction");
 
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
-            entity.Property(e => e.Desc).HasMaxLength(50);
             entity.Property(e => e.Img).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
 
@@ -95,11 +90,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Attraction_Country");
-
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Attraction)
-                .HasForeignKey<Attraction>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Attraction_OpeningHours");
 
             entity.HasOne(d => d.PersonState).WithMany(p => p.Attractions)
                 .HasForeignKey(d => d.PersonStateId)
@@ -118,7 +108,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("AttractionList");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.ExitDate).HasColumnType("datetime");
             entity.Property(e => e.RemainderDate).HasColumnType("datetime");
 
@@ -139,8 +128,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("AttractionListProduct");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.AttractionList).WithMany(p => p.AttractionListProducts)
                 .HasForeignKey(d => d.AttractionListId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -150,6 +137,10 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_AttractionListProduct_Product");
+
+            entity.HasOne(d => d.Status).WithMany(p => p.AttractionListProducts)
+                .HasForeignKey(d => d.StatusId)
+                .HasConstraintName("FK_AttractionListProduct_StatusProduct");
         });
 
         modelBuilder.Entity<AttractionType>(entity =>
@@ -169,7 +160,12 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Date).HasColumnType("datetime");
-            entity.Property(e => e.Desc).HasMaxLength(50);
+            entity.Property(e => e.Desc).HasMaxLength(250);
+
+            entity.HasOne(d => d.Attraction).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.AttractionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Comment_Attraction");
 
             entity.HasOne(d => d.User).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.UserId)
@@ -215,13 +211,15 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
         modelBuilder.Entity<OpeningHour>(entity =>
         {
-            entity.HasKey(e => e.AttractionId);
-
-            entity.Property(e => e.AttractionId).ValueGeneratedNever();
             entity.Property(e => e.ClosingHour).HasColumnType("datetime");
             entity.Property(e => e.OpeningHour1)
                 .HasColumnType("datetime")
                 .HasColumnName("OpeningHour");
+
+            entity.HasOne(d => d.Attraction).WithMany(p => p.OpeningHours)
+                .HasForeignKey(d => d.AttractionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_OpeningHours_Attraction1");
         });
 
         modelBuilder.Entity<PersonState>(entity =>
@@ -244,11 +242,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
                 .HasForeignKey(d => d.ProductTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_product_product_type");
-
-            entity.HasOne(d => d.Status).WithMany(p => p.Products)
-                .HasForeignKey(d => d.StatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Product_StatusProduct");
 
             entity.HasOne(d => d.StorageType).WithMany(p => p.Products)
                 .HasForeignKey(d => d.StorageTypeId)
@@ -300,6 +293,18 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
                 .HasConstraintName("FK_SavedAttraction_User");
         });
 
+        modelBuilder.Entity<Status>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Status");
+
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.Status1)
+                .HasMaxLength(10)
+                .HasColumnName("Status");
+        });
+
         modelBuilder.Entity<StatusProduct>(entity =>
         {
             entity.ToTable("StatusProduct");
@@ -324,6 +329,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.Property(e => e.AddingDate).HasColumnType("datetime");
             entity.Property(e => e.BackingDate).HasColumnType("datetime");
+            entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.TravelingDate).HasColumnType("datetime");
         });
 

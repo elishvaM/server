@@ -23,6 +23,8 @@ builder.Services.AddScoped<IAttractionListBll, AttractionListBll>();
 builder.Services.AddScoped<IAttractionListDal, AttractionListDal>();
 builder.Services.AddScoped<ITripListBll, TripListBll>();
 builder.Services.AddScoped<ITripListDal, TripListDal>();
+builder.Services.AddScoped<ICommentBll, CommentBll>();
+builder.Services.AddScoped<ICommentDal, CommentDal>();
 builder.Services.AddHttpContextAccessor();
 //הוספת ה database
 builder.Services.AddDbContext<ElishevaMHadasBListsTripContext>();

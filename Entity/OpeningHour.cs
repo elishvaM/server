@@ -5,6 +5,8 @@ namespace Entity;
 
 public partial class OpeningHour
 {
+    public int Id { get; set; }
+
     public int AttractionId { get; set; }
 
     public int Day { get; set; }
@@ -15,5 +17,5 @@ public partial class OpeningHour
 
     public bool IsOpening { get; set; }
 
-    public virtual Attraction? Attraction { get; set; }
+    public virtual Attraction Attraction { get; set; } = null!;
 }

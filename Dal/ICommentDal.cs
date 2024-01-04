@@ -8,10 +8,10 @@ namespace Dal
 {
     public interface ICommentDal
     {
-        //List<Comment> GetByAttractionId(int attractionId);
+        List<Comment> GetAll(int attractionId);
         List<Comment> GetComplained();
-        //??האם טוב
         void Delete(int commentId);
         void Add(Comment comment);  
+        void UpDateCount(Comment comment);  
     }
 }

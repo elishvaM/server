@@ -13,9 +13,11 @@ public partial class AttractionListProduct
 
     public int Amount { get; set; }
 
-    public int? Status { get; set; }
+    public int? StatusId { get; set; }
 
     public virtual AttractionList AttractionList { get; set; } = null!;
 
     public virtual Product Product { get; set; } = null!;
+
+    public virtual StatusProduct? Status { get; set; }
 }

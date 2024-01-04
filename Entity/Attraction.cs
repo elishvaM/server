@@ -5,7 +5,6 @@ namespace Entity;
 
 public partial class Attraction
 {
-
     public int Id { get; set; }
 
     public string Name { get; set; } = null!;
@@ -32,9 +31,11 @@ public partial class Attraction
 
     public virtual ICollection<AttractionList> AttractionLists { get; set; } = new List<AttractionList>();
 
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     public virtual Country Country { get; set; } = null!;
 
-    public virtual OpeningHour IdNavigation { get; set; } = null!;
+    public virtual ICollection<OpeningHour> OpeningHours { get; set; } = new List<OpeningHour>();
 
     public virtual PersonState PersonState { get; set; } = null!;
 

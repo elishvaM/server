@@ -13,7 +13,13 @@ public partial class Comment
 
     public int ComplainCount { get; set; }
 
+    public int AttractionId { get; set; }
+
     public int UserId { get; set; }
+
+    public bool Status { get; set; }
+
+    public virtual Attraction Attraction { get; set; } = null!;
 
     public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
 

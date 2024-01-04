@@ -9,5 +9,5 @@ public partial class StatusProduct
 
     public string Type { get; set; } = null!;
 
-    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+    public virtual ICollection<AttractionListProduct> AttractionListProducts { get; set; } = new List<AttractionListProduct>();
 }

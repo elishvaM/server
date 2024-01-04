@@ -16,6 +16,8 @@ namespace Dal
         }
         public void Add(Comment comment)
         {
+            comment.Status = true;
+            comment.Date = DateTime.Now;
             ElishevaMHadasBListsTripContext.Comments.Add(comment);
             ElishevaMHadasBListsTripContext.SaveChanges();
         }
@@ -23,20 +25,27 @@ namespace Dal
         public void Delete(int commentId)
         {
             Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
-           ElishevaMHadasBListsTripContext.Comments.Remove(foundComment);
+            //לא נרצה למחוק כי כך ייעלמו נתונים
+            foundComment.Status = false;
             ElishevaMHadasBListsTripContext.SaveChanges();
 
         }
 
-        //public List<Comment> GetByAttractionId(int attractionId)
-        //{
-        //    return "jj";
-        //    //return ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x=>x.)
-        //}
+        public List<Comment> GetAll(int attractionId)
+        {
+            return ElishevaMHadasBListsTripContext.Comments.Where(x => x.AttractionId == attractionId).ToList();
+        }
 
         public List<Comment> GetComplained()
         {
-            throw new NotImplementedException();
+            return ElishevaMHadasBListsTripContext.Comments.Where(x => x.ComplainCount >= 1).ToList();
+        }
+
+        public void UpDateCount(Comment comment)
+        {
+            Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
+            foundComment.ComplainCount = comment.ComplainCount + 1;
+            ElishevaMHadasBListsTripContext.SaveChanges();
         }
     }
 }

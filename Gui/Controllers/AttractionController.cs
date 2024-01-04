@@ -12,7 +12,6 @@ namespace Gui.Controllers
         private readonly IAttractionBll attractionBll;
         public AttractionController(IAttractionBll attractionBll)
         {
-            Console.WriteLine("came");
             this.attractionBll = attractionBll; 
         } 
 

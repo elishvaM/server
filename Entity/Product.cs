@@ -25,13 +25,9 @@ public partial class Product
 
     public string Name { get; set; } = null!;
 
-    public int StatusId { get; set; }
-
     public virtual ICollection<AttractionListProduct> AttractionListProducts { get; set; } = new List<AttractionListProduct>();
 
     public virtual ProductType ProductType { get; set; } = null!;
-
-    public virtual StatusProduct Status { get; set; } = null!;
 
     public virtual StorageType StorageType { get; set; } = null!;
 }
