@@ -16,9 +16,12 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/GetAll/{attractionId}")]
-        public List<CommentDto> GetAll(int attractionId)
+        public ActionResult GetAll(int attractionId)
         {
-            return commentaBll.GetAll(attractionId);
+            List<CommentDto> commentList = commentaBll.GetAll(attractionId);
+            if (commentList == null)
+                return BadRequest("לא נמצאו תגובות לאטרקציות זו או שארעה שגיאה");
+            return Ok(commentList);
         }
 
         [HttpPost("/api/[controller]/GetComplained")]
@@ -28,9 +31,10 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/Add")]
-        public void Add([FromBody] CommentDto comment)
+        public PostComment Add([FromBody] PostComment comment)
         {
-            commentaBll.Add(comment);   
+            commentaBll.Add(comment);
+            return comment;
         }
 
         [HttpPost("/api/[controller]/Delete/{id}")]
@@ -40,7 +44,7 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/UpDateCount")]
-        public void UpDateCount(CommentDto comment)
+        public void UpDateCount([FromBody] CommentDto comment)
         {
             commentaBll.UpDateCount(comment);
         }

@@ -34,6 +34,7 @@ namespace Bll
             CreateMap<AddressDto, Address>();
             CreateMap<Comment, CommentDto>();
             CreateMap<CommentDto, Comment>();
+            CreateMap<PostComment, Comment>();
             //כאן יתווספו כל הטבלאות
         }
     }

@@ -3,7 +3,13 @@ using System.Collections.Generic;
 
 namespace Dto;
 
-public partial class CommentDto
+public partial class CommentDto : PostComment
+{
+    public bool Status { get; set; }
+
+    public int ComplainCount { get; set; }
+}
+public partial class PostComment 
 {
     public int Id { get; set; }
 
@@ -11,12 +17,7 @@ public partial class CommentDto
 
     public DateTime Date { get; set; }
 
-    public int ComplainCount { get; set; }
-
     public int UserId { get; set; }
 
-    public int Count { get; set; }
-
-   
-
+    public int AttractionId { get; set; }
 }

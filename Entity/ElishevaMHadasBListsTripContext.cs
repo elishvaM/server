@@ -158,7 +158,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("Comment");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Date).HasColumnType("datetime");
             entity.Property(e => e.Desc).HasMaxLength(250);
 
@@ -198,15 +197,15 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("Like");
 
+            entity.HasOne(d => d.Attraction).WithMany(p => p.Likes)
+                .HasForeignKey(d => d.AttractionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Like_Attraction");
+
             entity.HasOne(d => d.AttractionList).WithMany(p => p.Likes)
                 .HasForeignKey(d => d.AttractionListId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Like_AttractionList");
-
-            entity.HasOne(d => d.Comment).WithMany(p => p.Likes)
-                .HasForeignKey(d => d.CommentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Like_Comment");
         });
 
         modelBuilder.Entity<OpeningHour>(entity =>

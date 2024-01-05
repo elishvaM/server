@@ -35,6 +35,8 @@ public partial class Attraction
 
     public virtual Country Country { get; set; } = null!;
 
+    public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
+
     public virtual ICollection<OpeningHour> OpeningHours { get; set; } = new List<OpeningHour>();
 
     public virtual PersonState PersonState { get; set; } = null!;

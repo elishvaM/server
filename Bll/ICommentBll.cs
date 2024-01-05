@@ -10,7 +10,7 @@ namespace Bll
     {
         List<CommentDto> GetAll(int attractionId);
         List<CommentDto> GetComplained();
-        void Add(CommentDto comment);
+        void Add(PostComment comment);
         void Delete(int commentId);
         void UpDateCount(CommentDto comment);
     }

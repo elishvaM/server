@@ -18,7 +18,7 @@ namespace Bll
             this.commentDal = commentDal;
             this.mapper = mapper;
         }
-        public void Add(CommentDto comment)
+        public void Add(PostComment comment)
         {
             commentDal.Add(mapper.Map<Comment>(comment));
         }

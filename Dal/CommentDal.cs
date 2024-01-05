@@ -43,7 +43,7 @@ namespace Dal
 
         public void UpDateCount(Comment comment)
         {
-            Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
+            Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == comment.Id);
             foundComment.ComplainCount = comment.ComplainCount + 1;
             ElishevaMHadasBListsTripContext.SaveChanges();
         }

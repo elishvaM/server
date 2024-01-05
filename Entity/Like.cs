@@ -7,13 +7,11 @@ public partial class Like
 {
     public int Id { get; set; }
 
+    public int AttractionId { get; set; }
+
     public int AttractionListId { get; set; }
 
-    public int Rank { get; set; }
-
-    public int CommentId { get; set; }
+    public virtual Attraction Attraction { get; set; } = null!;
 
     public virtual AttractionList AttractionList { get; set; } = null!;
-
-    public virtual Comment Comment { get; set; } = null!;
 }

@@ -36,6 +36,5 @@ public partial class UserDto
 
     public bool Status { get; set; }=true;
 
-    //לא עובד
     public string Type { get; set; } = "";
 }
