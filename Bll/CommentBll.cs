@@ -38,9 +38,9 @@ namespace Bll
             return mapper.Map<List<CommentDto>>(commentDal.GetComplained());    
         }
 
-        public void UpDateCount(CommentDto comment)
+        public void UpDateCount(int id)
         {
-           commentDal.UpDateCount(mapper.Map<Comment>(comment));    
+           commentDal.UpDateCount(id);    
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Bll
         List<CommentDto> GetComplained();
         void Add(PostComment comment);
         void Delete(int commentId);
-        void UpDateCount(CommentDto comment);
+        void UpDateCount(int id);
     }
 }

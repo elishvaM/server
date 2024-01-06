@@ -27,6 +27,7 @@ namespace Dal
             Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
             //לא נרצה למחוק כי כך ייעלמו נתונים
             foundComment.Status = false;
+            foundComment.ComplainCount = 0;
             ElishevaMHadasBListsTripContext.SaveChanges();
 
         }
@@ -41,10 +42,10 @@ namespace Dal
             return ElishevaMHadasBListsTripContext.Comments.Where(x => x.ComplainCount >= 1).ToList();
         }
 
-        public void UpDateCount(Comment comment)
+        public void UpDateCount(int id)
         {
-            Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == comment.Id);
-            foundComment.ComplainCount = comment.ComplainCount + 1;
+            Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == id);
+            foundComment.ComplainCount = foundComment.ComplainCount + 1;
             ElishevaMHadasBListsTripContext.SaveChanges();
         }
     }

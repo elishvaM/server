@@ -8,6 +8,14 @@ public partial class CommentDto : PostComment
     public bool Status { get; set; }
 
     public int ComplainCount { get; set; }
+
+}
+public partial class ComplainedComment
+{
+    public int Id { get; set; }
+
+    public int UserId { get; set; }
+
 }
 public partial class PostComment 
 {
@@ -17,7 +25,7 @@ public partial class PostComment
 
     public DateTime Date { get; set; }
 
-    public int UserId { get; set; }
+    public int UserId { get; set; } 
 
     public int AttractionId { get; set; }
 }
