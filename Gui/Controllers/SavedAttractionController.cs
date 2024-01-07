@@ -31,16 +31,9 @@ namespace Gui.Controllers
         //}
 
         [HttpPost("/api/[controller]/AddLovedAttraction")]
-        public void AddLovedAttraction(SavedAttractionDto lovedAttrraction)
-      {
-            savedAttractionBll.AddLovedAttraction(lovedAttrraction);
-        }
-        // PUT api/<ValuesController>/5
-        [HttpPut("/api/[controller]/RemoveLovedAttraction")]
-        public void RemoveLovedAttraction(SavedAttractionDto lovedAttrraction)
+        public bool AddLovedAttraction(SavedAttractionDto lovedAttrraction)
         {
-            Console.WriteLine("cameee");
-            savedAttractionBll.RemoveLovedAttraction(lovedAttrraction);
+           return savedAttractionBll.AddLovedAttraction(lovedAttrraction);
         }
 
         // DELETE api/<ValuesController>/5

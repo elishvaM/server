@@ -15,10 +15,27 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext = context;
         }
 
-        public void AddLovedAttraction(SavedAttraction lovedAttraction)
+        public bool AddLovedAttraction(SavedAttraction lovedAttraction)
         {
-            ElishevaMHadasBListsTripContext.SavedAttractions.Add(lovedAttraction);
-            this.ElishevaMHadasBListsTripContext.SaveChanges();
+
+            List<SavedAttraction> foundAttraction = ElishevaMHadasBListsTripContext.SavedAttractions.Where(x =>
+                                            x.AttractionId == lovedAttraction.AttractionId && x.UserId == lovedAttraction.UserId).ToList();
+            if (!foundAttraction.Any())
+            {
+
+                ElishevaMHadasBListsTripContext.SavedAttractions.Add(lovedAttraction);
+                ElishevaMHadasBListsTripContext.SaveChanges();
+                return true;
+
+            }
+            else
+            {
+                ElishevaMHadasBListsTripContext.SavedAttractions.RemoveRange(foundAttraction);
+                ElishevaMHadasBListsTripContext.SaveChanges();
+
+                return false;
+
+            }
         }
 
         public List<SavedAttraction> GetSavedAttractionByUserId(int userId)
@@ -26,12 +43,6 @@ namespace Dal
             return ElishevaMHadasBListsTripContext.SavedAttractions.Where(x => x.UserId == userId).ToList();
         }
 
-        public void RemoveLovedAttraction(SavedAttraction lovedAttractionId)
-        {
-            SavedAttraction foundAttraction = ElishevaMHadasBListsTripContext.SavedAttractions.FirstOrDefault(x =>
-                                              x.AttractionId == lovedAttractionId.AttractionId && x.UserId == lovedAttractionId.UserId);
-            ElishevaMHadasBListsTripContext.SavedAttractions.Remove(foundAttraction);
-            ElishevaMHadasBListsTripContext.SaveChanges();
-        }
+
     }
 }

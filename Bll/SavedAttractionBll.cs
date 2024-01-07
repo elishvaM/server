@@ -20,10 +20,10 @@ namespace Bll
             this.mapper = mapper;
         }
 
-        public void AddLovedAttraction(SavedAttractionDto lovedAttraction)
+        public bool AddLovedAttraction(SavedAttractionDto lovedAttraction)
         {
             ///??? var or object מה ההבדל
-            savedAttractionDal.AddLovedAttraction(mapper.Map<SavedAttraction>(lovedAttraction));
+            return savedAttractionDal.AddLovedAttraction(mapper.Map<SavedAttraction>(lovedAttraction));
         }
 
         public List<SavedAttractionDto> GetSavedAttractionByUserId(int userId)
@@ -32,9 +32,6 @@ namespace Bll
             return mapper.Map<List<SavedAttractionDto>>(savedAttractionDal.GetSavedAttractionByUserId(userId));
         }
 
-        public void RemoveLovedAttraction(SavedAttractionDto lovedaAttraction)
-        {
-            savedAttractionDal.RemoveLovedAttraction(mapper.Map<SavedAttraction>(lovedaAttraction));
-        }
+        
     }
 }

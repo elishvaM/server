@@ -11,7 +11,6 @@ namespace Dal
     {
         //?? לשנות לאוביקט
         List<SavedAttraction> GetSavedAttractionByUserId(int userId);
-        void AddLovedAttraction (SavedAttraction lovedAttraction);
-        void RemoveLovedAttraction (SavedAttraction lovedAttractionId);
+        bool AddLovedAttraction (SavedAttraction lovedAttraction);
     }
 }
