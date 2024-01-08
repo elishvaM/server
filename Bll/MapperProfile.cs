@@ -23,7 +23,9 @@ namespace Bll
             CreateMap<ProductDto, Product>();
             CreateMap<SavedAttraction, SavedAttractionDto>();
             CreateMap<SavedAttractionDto, SavedAttraction>();
-            CreateMap<AttractionList, AttractionListDto>();
+            CreateMap<AttractionList, AttractionListDto>()
+                .ForMember(a => a.AttractionListProducts,
+                y => y.MapFrom(t => t.AttractionListProducts));
             CreateMap<AttractionListDto, AttractionList>();
             CreateMap<TripList, TripListDto>()
                  .ForMember(u => u.CounAtraction, y => y.MapFrom(t => t.AttractionLists.Count()))
