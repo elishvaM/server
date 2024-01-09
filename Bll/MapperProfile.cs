@@ -35,6 +35,11 @@ namespace Bll
             CreateMap<Comment, CommentDto>();
             CreateMap<CommentDto, Comment>();
             CreateMap<PostComment, Comment>();
+            CreateMap<ProductType, ProductTypeDto>();
+            CreateMap<ProductTypeDto, ProductType>();
+            CreateMap<AttractionListProduct, AttractionListProductDto>()
+                .ForMember(u => u.Product, y => y.MapFrom(t => t.Product)).ReverseMap();
+            CreateMap<AttractionListProductDto, AttractionListProduct>();
             //כאן יתווספו כל הטבלאות
         }
     }
