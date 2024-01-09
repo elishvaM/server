@@ -46,15 +46,12 @@ namespace Gui.Controllers
             return Ok("מחיקה בוצעה בהצלחה");
         }
 
-        [HttpPost("/api/[controller]/UpDateCount")]
-        public ActionResult UpDateCount([FromBody] CommentDto comment)
+        [HttpPost("/api/[controller]/UpDateCount/{id}/{userId}")]
+        public ActionResult UpDateCount(int id,int userId)
         {
-            //if (commentaBll.GetComplained().Where(c => c.UserId == comment.UserId  && c.Id == comment.Id).Count() > 0)
-            //    return BadRequest("כבר דיווחת על תגובה זו");
-            //commentaBll.UpDateCount(comment.Id);
-            //return Ok("דווח בהצלחה");
-            commentaBll.UpDateCount(comment.Id);
-            return Ok("דווח בהצלחה");
+            if (commentaBll.UpDateCount(id, userId))
+                return Ok("דווח בהצלחה");
+            return Ok("דיווחת על תגובה זו כבר");
         }
     }
 }

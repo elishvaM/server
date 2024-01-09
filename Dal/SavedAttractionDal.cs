@@ -26,15 +26,12 @@ namespace Dal
                 ElishevaMHadasBListsTripContext.SavedAttractions.Add(lovedAttraction);
                 ElishevaMHadasBListsTripContext.SaveChanges();
                 return true;
-
             }
             else
             {
                 ElishevaMHadasBListsTripContext.SavedAttractions.RemoveRange(foundAttraction);
                 ElishevaMHadasBListsTripContext.SaveChanges();
-
                 return false;
-
             }
         }
 

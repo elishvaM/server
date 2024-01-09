@@ -23,6 +23,8 @@ public partial class User
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
+    public virtual ICollection<ComplainedComment> ComplainedComments { get; set; } = new List<ComplainedComment>();
+
     public virtual ICollection<SavedAttraction> SavedAttractions { get; set; } = new List<SavedAttraction>();
 
     public virtual UserType UserType { get; set; } = null!;

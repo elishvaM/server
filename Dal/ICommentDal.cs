@@ -12,6 +12,6 @@ namespace Dal
         List<Comment> GetComplained();
         void Delete(int commentId);
         void Add(Comment comment);  
-        void UpDateCount(int id);  
+        bool UpDateCount(int id,int userId);  
     }
 }

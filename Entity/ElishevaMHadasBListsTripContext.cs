@@ -176,16 +176,12 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
         modelBuilder.Entity<ComplainedComment>(entity =>
         {
-            entity.HasNoKey();
-
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
-            entity.HasOne(d => d.Comment).WithMany()
+            entity.HasOne(d => d.Comment).WithMany(p => p.ComplainedComments)
                 .HasForeignKey(d => d.CommentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ComplainedComments_Comment");
 
-            entity.HasOne(d => d.User).WithMany()
+            entity.HasOne(d => d.User).WithMany(p => p.ComplainedComments)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ComplainedComments_User");

@@ -21,5 +21,7 @@ public partial class Comment
 
     public virtual Attraction Attraction { get; set; } = null!;
 
+    public virtual ICollection<ComplainedComment> ComplainedComments { get; set; } = new List<ComplainedComment>();
+
     public virtual User User { get; set; } = null!;
 }
