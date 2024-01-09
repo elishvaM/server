@@ -27,6 +27,8 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
     public virtual DbSet<Comment> Comments { get; set; }
 
+    public virtual DbSet<ComplainedComment> ComplainedComments { get; set; }
+
     public virtual DbSet<Continent> Continents { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
@@ -170,6 +172,23 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Comment_User");
+        });
+
+        modelBuilder.Entity<ComplainedComment>(entity =>
+        {
+            entity.HasNoKey();
+
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+            entity.HasOne(d => d.Comment).WithMany()
+                .HasForeignKey(d => d.CommentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ComplainedComments_Comment");
+
+            entity.HasOne(d => d.User).WithMany()
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ComplainedComments_User");
         });
 
         modelBuilder.Entity<Continent>(entity =>
