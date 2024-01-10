@@ -27,13 +27,13 @@ namespace Bll
         {
             return mapper.Map<UserDto>(this.userDal.GetUserById(id));
         }
-        public UserDto LoginUser(string mail, string password)
+        public FullUser LoginUser(string mail, string password)
         {
-            return mapper.Map<UserDto>(this.userDal.LoginUser(mail, password));
+            return mapper.Map<FullUser>(this.userDal.LoginUser(mail, password));
         }
-        public void SignInUser(FullUser user)
+        public int SignInUser(FullUser user)
         {
-            this.userDal.SignInUser(mapper.Map<User>(user));
+            return this.userDal.SignInUser(mapper.Map<User>(user));
         }
 
         public void UpDateStatusById(UserDto user)
@@ -46,7 +46,7 @@ namespace Bll
             this.userDal.UpDateType(id, typeId);
         }
 
-        public void UpDateUser(UserDto user)
+        public void UpDateUser(FullUser user)
         {
             // ללא קשרי גומלין UserDto  מקבלת 
             //שולחת לפונקציה שמקבלת עם קשרי גומלין

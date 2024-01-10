@@ -16,6 +16,7 @@ namespace Bll
             CreateMap<User, UserDto>()
               .ForMember(u => u.Type, y => y.MapFrom(t => t.UserType.Type));
             CreateMap<FullUser, User>();
+            CreateMap<User, FullUser>();
             CreateMap<UserDto, User>();
             CreateMap<Attraction, AttractionDto>();
             CreateMap<AttractionDto, Attraction>();

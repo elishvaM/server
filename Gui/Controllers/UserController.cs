@@ -37,14 +37,15 @@ namespace Gui.Controllers
         {
             if (userBll.GetAllUsers().Contains(user))
                 return BadRequest("משתמש זה קיים");
-            userBll.SignInUser(user);
-            return Ok(user);
+            int id = userBll.SignInUser(user);
+            UserDto signed = userBll.GetUserById(id);
+            return Ok(signed);
         }
         //login
         [HttpPost("/api/[controller]/LogIn")]
         public ActionResult LogIn(UserLogin userInput)
         {
-            UserDto user = userBll.LoginUser(userInput.Email, userInput.Password);
+            FullUser user = userBll.LoginUser(userInput.Email, userInput.Password);
             if (user == null)
                 return BadRequest("פרטיך שגויים, אנא נסה שנית");// { user = user, message = "faild" };
             return Ok(user);
@@ -56,10 +57,11 @@ namespace Gui.Controllers
             userBll.UpDateStatusById(user);
         }
         //update user
-        [HttpPut("/api/[controller]/UpDateUser")]
-        public void UpDateUser([FromBody] UserDto user)
+        [HttpPost("/api/[controller]/UpDateUser")]
+        public FullUser UpDateUser([FromBody] FullUser user)
         {
             userBll.UpDateUser(user);
+            return user;
         }
         //update type
         [HttpPost("/api/[controller]/UpDateType")]
