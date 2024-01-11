@@ -23,9 +23,9 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/Add")]
-        public void Add([FromBody] AttractionListProductDto attractionListProduct)
+        public AttractionListProductDto Add([FromBody] AttractionListProductDto attractionListProduct)
         {
-            attractionListProductBll.Add(attractionListProduct);
+            return attractionListProductBll.Add(attractionListProduct);
         }
 
         // PUT api/<AttractionListProductController>/5
@@ -34,10 +34,10 @@ namespace Gui.Controllers
         {
         }
 
-        [HttpPost("/api/[controller]/Delete")]
-        public void Delete([FromBody] AttractionListProductDto attractionListProduct)
+        [HttpPost("/api/[controller]/Delete/{productId}/{attractionListId}")]
+        public void Delete(int productId, int attractionListId)
         {
-            attractionListProductBll.Delete(attractionListProduct);
+            attractionListProductBll.Delete(productId, attractionListId);
         }
     }
 }

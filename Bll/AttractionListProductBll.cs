@@ -20,14 +20,14 @@ namespace Bll
             this.mapper = mapper;
         }
 
-        public void Add(AttractionListProductDto attractionListProduct)
+        public AttractionListProductDto Add(AttractionListProductDto attractionListProduct)
         {
-            this.attractionListProductDal.Add(mapper.Map<AttractionListProduct>(attractionListProduct));
+            return mapper.Map<AttractionListProductDto>(this.attractionListProductDal.Add(mapper.Map<AttractionListProduct>(attractionListProduct)));
         }
 
-        public void Delete(AttractionListProductDto attractionListProduct)
+        public void Delete(int productId, int attractionListId)
         {
-            attractionListProductDal.Delete(mapper.Map<AttractionListProduct>(attractionListProduct));
+            attractionListProductDal.Delete(productId, attractionListId);
         }
 
         public List<AttractionListProductDto> GetByAttractionListId(int attractionListId)

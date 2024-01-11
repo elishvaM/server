@@ -17,16 +17,17 @@ namespace Dal
             ElishevaMHadasBListsTripContext = context;
         }
 
-        public void Add(AttractionListProduct attractionListProduct)
+        public AttractionListProduct Add(AttractionListProduct attractionListProduct)
         {
             ElishevaMHadasBListsTripContext.AttractionListProducts.Add(attractionListProduct);
             ElishevaMHadasBListsTripContext.SaveChanges();
-            //return attractionListProduct;
+            return attractionListProduct;
         }
 
-        public void Delete(AttractionListProduct attractionListProduct)
+        public void Delete(int productId, int attractionListId)
         {
-            ElishevaMHadasBListsTripContext.AttractionListProducts.Remove(attractionListProduct);
+            AttractionListProduct x = ElishevaMHadasBListsTripContext.AttractionListProducts.FirstOrDefault(x => x.AttractionListId == attractionListId && x.ProductId == productId);
+            ElishevaMHadasBListsTripContext.AttractionListProducts.Remove(x);
             ElishevaMHadasBListsTripContext.SaveChanges();
         }
 

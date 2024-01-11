@@ -15,11 +15,11 @@ namespace Gui.Controllers
         {
             this.attractionListBll = attractionListBll;
         }
-        // GET: api/<AttractionListController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+
+        [HttpGet("/api/[controller]/GetSAttractionListByAttractionId/{attractionId}")]
+        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId)
         {
-            return new string[] { "value1", "value2" };
+            return attractionListBll.GetAttractionListByAttractionId(attractionId);
         }
 
         [HttpGet("/api/[controller]/GetSAttractionListByUserId")]

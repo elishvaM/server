@@ -29,6 +29,8 @@ builder.Services.AddScoped<IProductTypeDal, ProductTypeDal>();
 builder.Services.AddScoped<IProductTypeBll, ProductTypeBll>();
 builder.Services.AddScoped<IAttractionListProductDal, AttractionListProductDal>();
 builder.Services.AddScoped<IAttractionListProductBll, AttractionListProductBll>();
+builder.Services.AddScoped<IStorageTypeDal, StorageTypeDal>();
+builder.Services.AddScoped<IStorageTypeBll, StorageTypeBll>();
 builder.Services.AddHttpContextAccessor();
 //הוספת ה database
 builder.Services.AddDbContext<ElishevaMHadasBListsTripContext>();

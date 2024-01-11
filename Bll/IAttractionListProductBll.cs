@@ -10,8 +10,7 @@ namespace Bll
     public interface IAttractionListProductBll
     {
         List<AttractionListProductDto> GetByAttractionListId(int attractionListId);
-
-        void Delete(AttractionListProductDto AttractionListProduct);
-        void Add(AttractionListProductDto attractionListProduct);
+        void Delete(int productId, int attractionListId);
+        AttractionListProductDto Add(AttractionListProductDto attractionListProduct);
     }
 }

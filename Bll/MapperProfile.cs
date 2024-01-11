@@ -17,13 +17,16 @@ namespace Bll
               .ForMember(u => u.Type, y => y.MapFrom(t => t.UserType.Type));
             CreateMap<FullUser, User>();
             CreateMap<UserDto, User>();
-            CreateMap<Attraction, AttractionDto>();
+            CreateMap<Attraction, AttractionDto>()
+                .ForMember(u => u.Type, y => y.MapFrom(t => t.Type.Type))
+                .ForMember(u => u.State, y => y.MapFrom(t => t.PersonState.State));
             CreateMap<AttractionDto, Attraction>();
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
             CreateMap<SavedAttraction, SavedAttractionDto>();
             CreateMap<SavedAttractionDto, SavedAttraction>();
-            CreateMap<AttractionList, AttractionListDto>();
+            CreateMap<AttractionList, AttractionListDto>()
+                .ForMember(u=>u.AttractionListProduct, y=> y.MapFrom(x => x.AttractionListProducts));
             CreateMap<AttractionListDto, AttractionList>();
             CreateMap<TripList, TripListDto>()
                  .ForMember(u => u.CounAtraction, y => y.MapFrom(t => t.AttractionLists.Count()))
@@ -37,9 +40,10 @@ namespace Bll
             CreateMap<PostComment, Comment>();
             CreateMap<ProductType, ProductTypeDto>();
             CreateMap<ProductTypeDto, ProductType>();
-            CreateMap<AttractionListProduct, AttractionListProductDto>()
-                .ForMember(u => u.Product, y => y.MapFrom(t => t.Product)).ReverseMap();
+            CreateMap<AttractionListProduct, AttractionListProductDto>();
             CreateMap<AttractionListProductDto, AttractionListProduct>();
+            CreateMap<StorageType, StorageTypeDto>();
+            CreateMap<StorageTypeDto, StorageType>();
             //כאן יתווספו כל הטבלאות
         }
     }

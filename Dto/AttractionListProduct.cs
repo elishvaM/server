@@ -14,6 +14,6 @@ public partial class AttractionListProductDto
     public int Amount { get; set; }
 
     public int? Status { get; set; }
-    public ProductDto Product { get; set; }
+    public ProductDto? Product { get; set; }
 
 }

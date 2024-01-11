@@ -10,5 +10,6 @@ namespace Bll
     public interface IAttractionListBll
     {
         List<AttractionListDto> GetAttractionListByUserId(int userId);
+        List<AttractionListDto> GetAttractionListByAttractionId(int attractionId);
     }
 }

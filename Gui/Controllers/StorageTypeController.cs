@@ -8,41 +8,40 @@ namespace Gui.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductTypeController : ControllerBase
+    public class StorageTypeController : ControllerBase
     {
-
-        private readonly IProductTypeBll productTypeBll;
-        public ProductTypeController(IProductTypeBll productTypeBll)
+        private readonly IStorageTypeBll storageTypeBll;
+        public StorageTypeController(IStorageTypeBll storageTypeBll)
         {
-            this.productTypeBll = productTypeBll;
+            this.storageTypeBll = storageTypeBll;
         }
 
         [HttpGet("/api/[controller]/GetAll")]
-        public List<ProductTypeDto> GetAll()
+        public List<StorageTypeDto> GetAll()
         {
-            return productTypeBll.GetAll();
+            return storageTypeBll.GetAll();
         }
 
-        // GET api/<ProductTypeController>/5
+        // GET api/<StorageTypeController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<ProductTypeController>
+        // POST api/<StorageTypeController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<ProductTypeController>/5
+        // PUT api/<StorageTypeController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<ProductTypeController>/5
+        // DELETE api/<StorageTypeController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

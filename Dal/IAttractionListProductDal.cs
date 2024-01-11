@@ -10,7 +10,7 @@ namespace Dal
     public interface IAttractionListProductDal
     {
         List<AttractionListProduct> GetByAttractionListId(int attractionId);
-        void Delete(AttractionListProduct attractionListProduct);
-        void Add(AttractionListProduct attractionListProduct);
+        void Delete(int productId , int attractionListId);
+        AttractionListProduct Add(AttractionListProduct attractionListProduct);
     }
 }

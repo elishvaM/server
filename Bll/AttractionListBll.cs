@@ -18,6 +18,12 @@ namespace Bll
             this.attractionListDal = attractionListDal;
             this.mapper = mapper;
         }
+
+        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId)
+        {
+            return mapper.Map<List<AttractionListDto>>(attractionListDal.GetAttractionListByAttractionId(attractionId));
+        }
+
         public List<AttractionListDto> GetAttractionListByUserId(int userId)
         {
             return mapper.Map<List<AttractionListDto>>(attractionListDal.GetAttractionListByUserId(userId));

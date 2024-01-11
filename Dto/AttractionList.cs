@@ -16,5 +16,7 @@ public partial class AttractionListDto
     public bool IsBasic { get; set; }
 
     public DateTime RemainderDate { get; set; }
-    
+
+    public List<AttractionListProductDto>? AttractionListProduct { get; set; }
+
 }
