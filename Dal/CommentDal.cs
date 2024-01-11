@@ -60,5 +60,15 @@ namespace Dal
             }
             return false;
         }
+
+        public bool ValidComment(int commentId)
+        {
+            Comment c = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
+            if (c == null)
+                return false;
+            c.ComplainCount = 0;
+            ElishevaMHadasBListsTripContext.SaveChanges();
+            return true;
+        }
     }
 }

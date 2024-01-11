@@ -20,6 +20,10 @@ namespace Bll
             CreateMap<UserDto, User>();
             CreateMap<Attraction, AttractionDto>();
             CreateMap<AttractionDto, Attraction>();
+                //.ForMember(a => a.Address, y => y.MapFrom(t => t.Address))
+                //.ForMember(a => a.Type, y => y.MapFrom(t => t.Type))
+                //.ForMember(a => a.PersonState, y => y.MapFrom(t => t.PersonState));
+
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
             CreateMap<SavedAttraction, SavedAttractionDto>();
@@ -35,6 +39,10 @@ namespace Bll
             CreateMap<TripListDto, TripList>();
             CreateMap<Address, AddressDto>();
             CreateMap<AddressDto, Address>();
+            CreateMap<AttractionType, AttractionTypeDto>();
+            CreateMap<AttractionTypeDto,AttractionType >();
+            CreateMap<PersonState,PersonStateDto >();
+            CreateMap<PersonStateDto, PersonState>();
             CreateMap<Comment, CommentDto>();
             CreateMap<CommentDto, Comment>();
             CreateMap<PostComment, Comment>();

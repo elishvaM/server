@@ -35,8 +35,6 @@ namespace Gui.Controllers
         {
             commentaBll.Add(comment);
             return comment;
-            //return Ok("התווסף בהצלחה"+comment);
-            //return BadRequest("שגיאה"+comment);
         }
 
         [HttpPost("/api/[controller]/Delete/{id}")]
@@ -47,11 +45,19 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/UpDateCount/{id}/{userId}")]
-        public ActionResult UpDateCount(int id,int userId)
+        public ActionResult UpDateCount(int id, int userId)
         {
             if (commentaBll.UpDateCount(id, userId))
                 return Ok("דווח בהצלחה");
             return Ok("דיווחת על תגובה זו כבר");
+        }
+
+        [HttpPost("/api/[controller]/ValidComment/{id}")]
+        public ActionResult ValidComment(int id)
+        {
+            if (commentaBll.ValidComment(id))
+                return Ok("עודכן בהצלחה");
+            return BadRequest("ארעה שגיאה או שתגובה זו לא נמצאה");
         }
     }
 }

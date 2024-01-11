@@ -13,6 +13,7 @@ namespace Bll
         void Add(PostComment comment);
         void Delete(int commentId);
         bool UpDateCount(int id, int userId);
+        bool ValidComment(int commentId);
 
     }
 }

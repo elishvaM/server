@@ -19,7 +19,7 @@ public partial class TripListDto
 
     public int CounAtraction { get; set; }
 
-    //קישור לרשימות אטרקמיות הטיול
+    //קישור לרשימות אטרקציות הטיול
     public List<AttractionListDto>? AttractionList { get; set; }
     
 

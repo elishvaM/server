@@ -15,13 +15,19 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext = context;
         }
-        public void Add(Attraction attraction)
+        public int Add(Attraction attraction)
         {
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
+            ElishevaMHadasBListsTripContext.SaveChanges();
+            return attraction.Id;
         }
         public List<Attraction> GetAll()
         {
-           return this.ElishevaMHadasBListsTripContext.Attractions.Include(x=>x.Address).OrderBy(x=>x.Address.Number).ToList();
+            return this.ElishevaMHadasBListsTripContext.Attractions
+                 .Include(x => x.Address)
+                 .Include(x => x.PersonState)
+                 .Include(x => x.Type)
+                 .ToList();
         }
 
         public Attraction GetById(int id)
@@ -35,15 +41,18 @@ namespace Dal
             a.Name = attraction.Name;
             a.Desc = attraction.Desc;
             a.Img = attraction.Img;
-            a.TypeId = attraction.TypeId;
+            a.Type = attraction.Type;
             a.WebsiteAddress = attraction.WebsiteAddress;
-            a.CountryId = attraction.CountryId;
-            a.IsConfirm = false;
+            a.Address = attraction.Address;
+            a.PersonState = attraction.PersonState;
+            a.IsConfirm = a.IsConfirm;
+            ElishevaMHadasBListsTripContext.SaveChanges();
         }
         public void UpdateStatusById(int id)
         {
             var a = this.ElishevaMHadasBListsTripContext.Attractions.FirstOrDefault(x => x.Id == id);
             a.IsConfirm = !a.IsConfirm;
+            ElishevaMHadasBListsTripContext.SaveChanges();
         }
     }
 }

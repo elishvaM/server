@@ -42,5 +42,10 @@ namespace Bll
         {
             return commentDal.UpDateCount(id, userId);
         }
+
+        public bool ValidComment(int commentId)
+        {
+          return commentDal.ValidComment(commentId);
+        }
     }
 }

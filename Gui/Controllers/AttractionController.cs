@@ -12,8 +12,8 @@ namespace Gui.Controllers
         private readonly IAttractionBll attractionBll;
         public AttractionController(IAttractionBll attractionBll)
         {
-            this.attractionBll = attractionBll; 
-        } 
+            this.attractionBll = attractionBll;
+        }
 
         [HttpGet("/api/[controller]/GetAll")]
         public object GetAll()
@@ -28,21 +28,23 @@ namespace Gui.Controllers
         }
 
         [HttpGet("/api/[controller]/Add")]
-        public void Add([FromBody] AttractionDto a)
+        public AttractionDto Add([FromBody] AttractionDto a)
         {
-            attractionBll.Add(a);
+            int id = attractionBll.Add(a);
+            AttractionDto add = attractionBll.GetById(id);
+            return add;
         }
 
-        [HttpPut("/api/[controller]/Update/attraction")]
+        [HttpPost("/api/[controller]/Update/attraction")]
         public void Update([FromBody] AttractionDto a)
         {
             attractionBll.Update(a);
         }
 
-        [HttpPut("/api/[controller]/Update/{id}")]
-        public void UpdateStatusById(int id)
-        {
-            attractionBll.UpdateStatusById(id);
-        }
+        //[HttpPut("/api/[controller]/updateStatusById/{id}")]
+        //public void UpdateStatusById(int id)
+        //{
+        //    attractionBll.UpdateStatusById(id);
+        //}
     }
 }

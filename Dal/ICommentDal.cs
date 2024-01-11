@@ -13,5 +13,6 @@ namespace Dal
         void Delete(int commentId);
         void Add(Comment comment);  
         bool UpDateCount(int id,int userId);  
+        bool ValidComment (int commentId);
     }
 }
