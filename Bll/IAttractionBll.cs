@@ -10,7 +10,7 @@ namespace Bll
     {
         List<AttractionDto> GetAll();
         AttractionDto GetById(int id);
-        void Add(AttractionDto attraction);
+        int Add(AttractionDto attraction);
         void Update(AttractionDto attraction);
         void UpdateStatusById(int id);
     }

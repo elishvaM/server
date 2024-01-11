@@ -18,15 +18,15 @@ namespace Bll
         // dto אנו מקבלות ועובדות עם אובייקטים לא קשרי גומלין  bll בשכבת 
         //ולכן הצטרכנו להמירם
         private readonly IAttractionDal attractionDal;
-        private readonly  IMapper mapper;
+        private readonly IMapper mapper;
         public AttractionBll(IAttractionDal attractionDal, IMapper mapper)
         {
             this.attractionDal = attractionDal;
             this.mapper = mapper;
         }
-        public void Add(AttractionDto attraction)
+        public int Add(AttractionDto attraction)
         {
-            this.attractionDal.Add(mapper.Map<Attraction>(attraction));
+            return this.attractionDal.Add(mapper.Map<Attraction>(attraction));
         }
         public List<AttractionDto> GetAll()
         {
@@ -34,8 +34,8 @@ namespace Bll
         }
         public AttractionDto GetById(int id)
         {
-          return mapper.Map<AttractionDto>(this.attractionDal.GetById(id));
-//            ne.CityName = at.Address.Land; 
+            return mapper.Map<AttractionDto>(this.attractionDal.GetById(id));
+            //            ne.CityName = at.Address.Land; 
 
         }
         public void Update(AttractionDto attraction)
@@ -45,7 +45,7 @@ namespace Bll
 
         public void UpdateStatusById(int id)
         {
-           this.attractionDal.UpdateStatusById(id);
+            this.attractionDal.UpdateStatusById(id);
         }
     }
 }

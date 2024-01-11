@@ -10,13 +10,13 @@ namespace Bll
     { //thes the functions that will be excueted on the db
 
         //sign user
-        void SignInUser(FullUser user);
+        int SignInUser(FullUser user);
         //login user
-        UserDto LoginUser(string mail, string password);
+        FullUser LoginUser(string mail, string password);
         //get all users
         List<UserDto> GetAllUsers();
         //update user
-        void UpDateUser(UserDto user);
+        void UpDateUser(FullUser user);
         //get user by id
         UserDto GetUserById(int id);
         //change status

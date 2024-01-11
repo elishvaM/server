@@ -42,11 +42,33 @@ namespace Dal
             return ElishevaMHadasBListsTripContext.Comments.Where(x => x.ComplainCount >= 1).ToList();
         }
 
-        public void UpDateCount(int id)
+        public bool UpDateCount(int id, int userId)
         {
             Comment foundComment = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == id);
-            foundComment.ComplainCount = foundComment.ComplainCount + 1;
+            //נבדוק שמשתמש כבר לא דיווח עליה
+            List<ComplainedComment> found = ElishevaMHadasBListsTripContext.ComplainedComments.Where(x =>
+                                        x.CommentId == id && x.UserId == userId).ToList();
+            if (!found.Any())
+            {
+                foundComment.ComplainCount = foundComment.ComplainCount + 1;
+                ComplainedComment complainedComment = new ComplainedComment();
+                complainedComment.CommentId = id;
+                complainedComment.UserId = userId;
+                ElishevaMHadasBListsTripContext.ComplainedComments.Add(complainedComment);
+                ElishevaMHadasBListsTripContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidComment(int commentId)
+        {
+            Comment c = ElishevaMHadasBListsTripContext.Comments.FirstOrDefault(x => x.Id == commentId);
+            if (c == null)
+                return false;
+            c.ComplainCount = 0;
             ElishevaMHadasBListsTripContext.SaveChanges();
+            return true;
         }
     }
 }

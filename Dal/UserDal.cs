@@ -26,10 +26,9 @@ namespace Dal
         }
         public User LoginUser(string email, string password)
         {
-
             return this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
         }
-        public void SignInUser(User user)
+        public int SignInUser(User user)
         {
             user.UserTypeId = 1;
             user.Status = true;
@@ -37,6 +36,8 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext.Users.Add(user);
             //svae
             this.ElishevaMHadasBListsTripContext.SaveChanges();
+            //כדי לקבל את האיידי
+            return user.Id;
         }
 
         public void UpDateStatusById(User user)

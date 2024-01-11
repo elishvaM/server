@@ -35,12 +35,17 @@ namespace Bll
 
         public List<CommentDto> GetComplained()
         {
-            return mapper.Map<List<CommentDto>>(commentDal.GetComplained());    
+            return mapper.Map<List<CommentDto>>(commentDal.GetComplained());
         }
 
-        public void UpDateCount(int id)
+        public bool UpDateCount(int id, int userId)
         {
-           commentDal.UpDateCount(id);    
+            return commentDal.UpDateCount(id, userId);
+        }
+
+        public bool ValidComment(int commentId)
+        {
+          return commentDal.ValidComment(commentId);
         }
     }
 }

@@ -19,4 +19,7 @@ public partial class AttractionListDto
 
     public List<AttractionListProductDto>? AttractionListProduct { get; set; }
 
+    //public  ICollection<AttractionListProductDto> AttractionListProducts { get; set; } 
+
+
 }
