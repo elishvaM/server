@@ -34,6 +34,18 @@ namespace Dal
 
         public void Update(Attraction attraction)
         {
+
+            //this.ElishevaMHadasBListsTripContext.AttractionListProducts
+            //    .Where(x =>  x.AttractionList.ExitDate.Date == DateTime.Today)
+            //    .GroupBy(x => x.Product).Select(y =>
+            //    {
+            //        string key = y.Key.Name;
+            //        int sum =y.Key.IsDuplicated?y.Sum(x=>x.Amount): y.ToList().Max(x => x.Amount);
+            //    //  return 
+
+            //    });
+
+            // var a = this.ElishevaMHadasBListsTripContext.Attractions.OrderByDescending(x =>x.AttractionLists.Count()).Take(2);
             var a = this.ElishevaMHadasBListsTripContext.Attractions.FirstOrDefault(x => x.Id == attraction.Id);
             a.Name = attraction.Name;
             a.Desc = attraction.Desc;
