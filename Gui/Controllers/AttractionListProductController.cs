@@ -28,6 +28,11 @@ namespace Gui.Controllers
             return attractionListProductBll.Add(attractionListProduct);
         }
 
+        [HttpPost("/api/[controller]/AddList")]
+        public List<AttractionListProductDto> AddList([FromBody] List<AttractionListProductDto> attractionListProduct)
+        {
+            return attractionListProductBll.AddList(attractionListProduct);
+        }
         // PUT api/<AttractionListProductController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)

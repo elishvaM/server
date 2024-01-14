@@ -26,12 +26,15 @@ namespace Bll
                 //.ForMember(a => a.Type, y => y.MapFrom(t => t.Type))
                 //.ForMember(a => a.PersonState, y => y.MapFrom(t => t.PersonState));
 
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto>()
+                .ForMember(a => a.StorageType, y => y.MapFrom(t => t.StorageType.Type))
+                .ForMember(a => a.ProductType, y => y.MapFrom(t => t.ProductType.Type));
             CreateMap<ProductDto, Product>();
             CreateMap<SavedAttraction, SavedAttractionDto>();
             CreateMap<SavedAttractionDto, SavedAttraction>();
             CreateMap<AttractionList, AttractionListDto>()
-                .ForMember(u=>u.AttractionListProduct, y=> y.MapFrom(x => x.AttractionListProducts));
+                .ForMember(u=>u.AttractionListProduct, y=> y.MapFrom(x => x.AttractionListProducts))
+                .ForMember(u=>u.Attraction, y=> y.MapFrom(x => x.Attraction));
             CreateMap<AttractionListDto, AttractionList>();
             CreateMap<TripList, TripListDto>()
                  .ForMember(u => u.CounAtraction, y => y.MapFrom(t => t.AttractionLists.Count()))

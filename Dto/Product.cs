@@ -13,6 +13,10 @@ public partial class ProductDto
 
     public int StorageTypeId { get; set; }
 
+    public string? ProductType { get; set; }//add field
+
+    public string? StorageType { get; set; }//add field
+
     public bool IsNeedAssurants { get; set; }
 
     public string Img { get; set; } = null!;

@@ -10,6 +10,6 @@ namespace Dal
     public interface IAttractionListDal
     {
         List<AttractionList> GetAttractionListByUserId(int userId);
-        List<AttractionList> GetAttractionListByAttractionId(int attractionId);
+        List<AttractionList> GetAttractionListByAttractionId(int attractionId, int myattractionList);
     }
 }

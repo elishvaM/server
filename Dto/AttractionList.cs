@@ -17,6 +17,8 @@ public partial class AttractionListDto
 
     public DateTime RemainderDate { get; set; }
 
+    public AttractionDto? Attraction { get; set; }
+
     public List<AttractionListProductDto>? AttractionListProduct { get; set; }
 
     //public  ICollection<AttractionListProductDto> AttractionListProducts { get; set; } 

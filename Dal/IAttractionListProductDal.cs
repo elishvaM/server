@@ -12,5 +12,6 @@ namespace Dal
         List<AttractionListProduct> GetByAttractionListId(int attractionId);
         void Delete(int productId , int attractionListId);
         AttractionListProduct Add(AttractionListProduct attractionListProduct);
+        List<AttractionListProduct> AddList(List<AttractionListProduct> attractionListProduct);
     }
 }

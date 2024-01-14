@@ -25,6 +25,11 @@ namespace Bll
             return mapper.Map<AttractionListProductDto>(this.attractionListProductDal.Add(mapper.Map<AttractionListProduct>(attractionListProduct)));
         }
 
+        public List<AttractionListProductDto> AddList(List<AttractionListProductDto> attractionListProduct)
+        {
+            return mapper.Map<List<AttractionListProductDto>>(this.attractionListProductDal.AddList(mapper.Map<List<AttractionListProduct>>(attractionListProduct)));
+        }
+
         public void Delete(int productId, int attractionListId)
         {
             attractionListProductDal.Delete(productId, attractionListId);
