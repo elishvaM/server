@@ -56,6 +56,10 @@ namespace Bll
             CreateMap<AttractionListProductDto, AttractionListProduct>();
             CreateMap<StorageType, StorageTypeDto>();
             CreateMap<StorageTypeDto, StorageType>();
+            CreateMap<AttractionType,AttractionTypeDto>();
+            CreateMap<AttractionTypeDto, AttractionType>();
+            CreateMap<PersonState, PersonStateDto>();
+            CreateMap<PersonStateDto, PersonState>();
             //כאן יתווספו כל הטבלאות
         }
     }

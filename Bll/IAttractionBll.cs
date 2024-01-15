@@ -13,5 +13,6 @@ namespace Bll
         int Add(AttractionDto attraction);
         void Update(AttractionDto attraction);
         void UpdateStatusById(int id);
+        List<AttractionDto> GetFavorites();
     }
 }

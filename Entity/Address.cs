@@ -11,9 +11,9 @@ public partial class Address
 
     public string City { get; set; } = null!;
 
-    public string Street { get; set; } = null!;
+    public string? Street { get; set; }
 
-    public int Number { get; set; }
+    public int? Number { get; set; }
 
     public virtual ICollection<Attraction> Attractions { get; set; } = new List<Attraction>();
 }

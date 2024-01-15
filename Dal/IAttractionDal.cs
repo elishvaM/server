@@ -14,5 +14,7 @@ namespace Dal
         int Add(Attraction attraction);
         void Update(Attraction attraction);
         void UpdateStatusById(int id);
+        List<Attraction> GetFavorites();
+
     }
 }

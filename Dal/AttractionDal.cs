@@ -32,6 +32,12 @@ namespace Dal
             return this.ElishevaMHadasBListsTripContext.Attractions.FirstOrDefault(x => x.Id == id);
         }
 
+        public List<Attraction> GetFavorites()
+        {
+            //לא צריך לפי איידי?
+            return this.ElishevaMHadasBListsTripContext.Attractions.Include(x => x.Address).OrderByDescending(x =>x.AttractionLists.Count()).Take(2).ToList();
+        }
+
         public void Update(Attraction attraction)
         {
 
@@ -45,7 +51,6 @@ namespace Dal
 
             //    });
 
-            // var a = this.ElishevaMHadasBListsTripContext.Attractions.OrderByDescending(x =>x.AttractionLists.Count()).Take(2);
             var a = this.ElishevaMHadasBListsTripContext.Attractions.FirstOrDefault(x => x.Id == attraction.Id);
             a.Name = attraction.Name;
             a.Desc = attraction.Desc;
