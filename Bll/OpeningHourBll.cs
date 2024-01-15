@@ -25,7 +25,6 @@ namespace Bll
         }
         public List<OpeningHourDto> Get(int id)
         {
-            //mapper.Map < List < CommentDto >>
             return mapper.Map<List<OpeningHourDto>>(this.openingHoureDal.Get(id));
         }
 
