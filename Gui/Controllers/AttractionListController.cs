@@ -16,10 +16,10 @@ namespace Gui.Controllers
             this.attractionListBll = attractionListBll;
         }
 
-        [HttpGet("/api/[controller]/GetSAttractionListByAttractionId/{attractionId}")]
-        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId)
+        [HttpGet("/api/[controller]/GetSAttractionListByAttractionId/{attractionId}/{myattractionlist}")]
+        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId, int myattractionList)
         {
-            return attractionListBll.GetAttractionListByAttractionId(attractionId);
+            return attractionListBll.GetAttractionListByAttractionId(attractionId, myattractionList);
         }
 
         [HttpGet("/api/[controller]/GetSAttractionListByUserId")]

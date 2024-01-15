@@ -26,7 +26,9 @@ namespace Bll
             //.ForMember(a => a.Type, y => y.MapFrom(t => t.Type))
             //.ForMember(a => a.PersonState, y => y.MapFrom(t => t.PersonState));
 
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto>()
+                .ForMember(a => a.StorageType, y => y.MapFrom(t => t.StorageType.Type))
+                .ForMember(a => a.ProductType, y => y.MapFrom(t => t.ProductType.Type));
             CreateMap<ProductDto, Product>();
             CreateMap<SavedAttraction, SavedAttractionDto>();
             CreateMap<SavedAttractionDto, SavedAttraction>();

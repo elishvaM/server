@@ -12,5 +12,6 @@ namespace Bll
         List<AttractionListProductDto> GetByAttractionListId(int attractionListId);
         void Delete(int productId, int attractionListId);
         AttractionListProductDto Add(AttractionListProductDto attractionListProduct);
+        List<AttractionListProductDto> AddList(List<AttractionListProductDto> attractionListProduct);
     }
 }

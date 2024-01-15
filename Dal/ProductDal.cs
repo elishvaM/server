@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace Dal
         public List<Product> GetAllProducts()
         {
 
-            return this.ElishevaMHadasBListsTripContext.Products.ToList();
+            return this.ElishevaMHadasBListsTripContext.Products.Include(x=>x.StorageType)
+                .Include(x=>x.ProductType).ToList();
         }
         public int AddProduct(Product p)
         {

@@ -19,9 +19,9 @@ namespace Bll
             this.mapper = mapper;
         }
 
-        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId)
+        public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId, int myattractionList)
         {
-            return mapper.Map<List<AttractionListDto>>(attractionListDal.GetAttractionListByAttractionId(attractionId));
+            return mapper.Map<List<AttractionListDto>>(attractionListDal.GetAttractionListByAttractionId(attractionId, myattractionList));
         }
 
         public List<AttractionListDto> GetAttractionListByUserId(int userId)

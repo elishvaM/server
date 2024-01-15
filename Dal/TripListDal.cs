@@ -32,7 +32,9 @@ namespace Dal
 
         public List<TripList> GetAll(int userId)
         {
-            return ElishevaMHadasBListsTripContext.TripLists.Where(x => x.UserId == userId).Include(x => x.AttractionLists).ToList();
+            return ElishevaMHadasBListsTripContext.TripLists.Where(x => x.UserId == userId)
+                .Include(x => x.AttractionLists).ThenInclude(x=>x.Attraction)
+                 .ToList();
         }
 
 

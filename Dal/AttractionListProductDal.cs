@@ -24,6 +24,13 @@ namespace Dal
             return attractionListProduct;
         }
 
+        public List<AttractionListProduct> AddList(List<AttractionListProduct> attractionListProduct)
+        {
+            ElishevaMHadasBListsTripContext.AttractionListProducts.AddRange(attractionListProduct);
+            ElishevaMHadasBListsTripContext.SaveChanges();
+            return attractionListProduct;
+        }
+
         public void Delete(int productId, int attractionListId)
         {
             AttractionListProduct x = ElishevaMHadasBListsTripContext.AttractionListProducts.FirstOrDefault(x => x.AttractionListId == attractionListId && x.ProductId == productId);
@@ -34,7 +41,9 @@ namespace Dal
         public List<AttractionListProduct> GetByAttractionListId(int attractionListId)
         {
             return ElishevaMHadasBListsTripContext.AttractionListProducts.Where(x=> x.AttractionListId == attractionListId)
-                .Include(x=>x.Product).ToList();
+                .Include(x => x.Product).ThenInclude(x => x.StorageType)
+                .Include(x => x.Product).ThenInclude(x => x.ProductType)
+                .ToList();
         }
     }
 }

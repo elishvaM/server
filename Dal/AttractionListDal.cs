@@ -16,10 +16,11 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext = context;
         }
 
-        public List<AttractionList> GetAttractionListByAttractionId(int attractionId)
+        public List<AttractionList> GetAttractionListByAttractionId(int attractionId, int myattractionList)
         {
-            return ElishevaMHadasBListsTripContext.AttractionLists.Where(x=>x.AttractionId == attractionId)
-                .Include(x=>x.AttractionListProducts).ThenInclude(x=>x.Product)
+            return ElishevaMHadasBListsTripContext.AttractionLists.Where(x=>x.AttractionId == attractionId && x.Id!= myattractionList)
+                .Include(x=>x.AttractionListProducts).ThenInclude(x=>x.Product).ThenInclude(x=>x.StorageType)
+                .Include(x=>x.AttractionListProducts).ThenInclude(x=>x.Product).ThenInclude(x=>x.ProductType)
                 .ToList();
         }
 
