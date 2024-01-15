@@ -34,7 +34,6 @@ namespace Dal
 
         public List<Attraction> GetFavorites()
         {
-            //לא צריך לפי איידי?
             return this.ElishevaMHadasBListsTripContext.Attractions.Include(x => x.Address).OrderByDescending(x =>x.AttractionLists.Count()).Take(2).ToList();
         }
 

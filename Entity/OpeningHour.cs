@@ -11,9 +11,9 @@ public partial class OpeningHour
 
     public int Day { get; set; }
 
-    public DateTime? OpeningHour1 { get; set; }
+    public TimeSpan? OpeningHour1 { get; set; }
 
-    public DateTime? ClosingHour { get; set; }
+    public TimeSpan? ClosingHour { get; set; }
 
     public bool IsOpening { get; set; }
 

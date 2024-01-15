@@ -225,10 +225,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
         modelBuilder.Entity<OpeningHour>(entity =>
         {
-            entity.Property(e => e.ClosingHour).HasColumnType("datetime");
-            entity.Property(e => e.OpeningHour1)
-                .HasColumnType("datetime")
-                .HasColumnName("OpeningHour");
+            entity.Property(e => e.OpeningHour1).HasColumnName("OpeningHour");
 
             entity.HasOne(d => d.Attraction).WithMany(p => p.OpeningHours)
                 .HasForeignKey(d => d.AttractionId)
