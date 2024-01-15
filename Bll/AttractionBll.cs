@@ -38,6 +38,12 @@ namespace Bll
             //            ne.CityName = at.Address.Land; 
 
         }
+
+        public List<AttractionDto> GetFavorites()
+        {
+            return mapper.Map<List<AttractionDto>>(this.attractionDal.GetFavorites());
+        }
+
         public void Update(AttractionDto attraction)
         {
             this.attractionDal.Update(mapper.Map<Attraction>(attraction));

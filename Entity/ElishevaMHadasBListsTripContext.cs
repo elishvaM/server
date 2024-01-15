@@ -69,7 +69,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
         {
             entity.ToTable("Address");
 
-            entity.Property(e => e.City).HasMaxLength(20);
+            entity.Property(e => e.City).HasMaxLength(40);
             entity.Property(e => e.Land).HasMaxLength(20);
             entity.Property(e => e.Street).HasMaxLength(20);
         });

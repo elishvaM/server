@@ -44,5 +44,11 @@ namespace Gui.Controllers
         //{
         //    attractionBll.UpdateStatusById(id);
         //}
+        
+        [HttpGet("/api/[controller]/GetFavorites")]
+        public List<AttractionDto> GetFavorites()
+        {
+            return attractionBll.GetFavorites();
+        }
     }
 }
