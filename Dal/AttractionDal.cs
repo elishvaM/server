@@ -15,11 +15,12 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext = context;
         }
-        public int Add(Attraction attraction)
+        public Attraction Add(Attraction attraction)
         {
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
+           
             ElishevaMHadasBListsTripContext.SaveChanges();
-            return attraction.Id;
+            return attraction;
         }
         public List<Attraction> GetAll()
         {

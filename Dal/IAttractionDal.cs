@@ -11,7 +11,7 @@ namespace Dal
     {
         List<Attraction> GetAll();
         Attraction GetById(int id);
-        int Add(Attraction attraction);
+        Attraction Add(Attraction attraction);
         void Update(Attraction attraction);
         void UpdateStatusById(int id);
         List<Attraction> GetFavorites();

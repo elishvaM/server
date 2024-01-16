@@ -81,6 +81,8 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
             entity.ToTable("Attraction");
 
             entity.Property(e => e.Img).HasMaxLength(50);
+            entity.Property(e => e.Img2).HasMaxLength(50);
+            entity.Property(e => e.Img3).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.Address).WithMany(p => p.Attractions)

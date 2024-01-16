@@ -24,9 +24,9 @@ namespace Bll
             this.attractionDal = attractionDal;
             this.mapper = mapper;
         }
-        public int Add(AttractionDto attraction)
+        public AttractionDto Add(AttractionDto attraction)
         {
-            return this.attractionDal.Add(mapper.Map<Attraction>(attraction));
+            return mapper.Map<AttractionDto>(this.attractionDal.Add(mapper.Map<Attraction>(attraction)));
         }
         public List<AttractionDto> GetAll()
         {

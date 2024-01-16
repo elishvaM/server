@@ -20,6 +20,9 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext.OpeningHours.Add(openingHour);
             this.ElishevaMHadasBListsTripContext.SaveChanges();
         }
+
+       
+
         public List<OpeningHour> Get(int id)
         {
             return this.ElishevaMHadasBListsTripContext.OpeningHours.Where(o => o.AttractionId == id).ToList();
@@ -34,6 +37,11 @@ namespace Dal
         {
             OpeningHour found = this.ElishevaMHadasBListsTripContext.OpeningHours
                 .FirstOrDefault(o =>o.Id==openingHour.Id);
+            //if(this.ElishevaMHadasBListsTripContext.OpeningHours
+            //    .Any(o => o.Id != openingHour.Id && openingHour.Day == o.Day && openingHour.AttractionId == o.AttractionId && ()))
+            //{
+            //    return null;
+            //}
             if (found != null)
             {
                 found.Day = openingHour.Day;
@@ -56,6 +64,11 @@ namespace Dal
                 this.ElishevaMHadasBListsTripContext.SaveChanges();
                 return openingHour;
             }
+        }
+        public bool CheckIsValid(string openingHour, string closingHour)
+        {
+            // if(Converter(  openingHour) > closingHour &( openingHour > "24"))
+            return true;
         }
     }
 }

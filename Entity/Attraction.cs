@@ -13,6 +13,10 @@ public partial class Attraction
 
     public string Img { get; set; } = null!;
 
+    public string? Img2 { get; set; }
+
+    public string? Img3 { get; set; }
+
     public string WebsiteAddress { get; set; } = null!;
 
     public int CountryId { get; set; }

@@ -67,42 +67,43 @@ namespace Bll
 
         public bool SendEmailOnly(string to, string subject)
         {
-            User user = this.userDal.GetAllUsers().FirstOrDefault(x =>  x.Email == to);
+            User user = this.userDal.GetAllUsers().FirstOrDefault(x =>  x.Email.ToLower() == to.ToLower());
 
             if (user != null)
             {
                 //יצירת סיסמא
-                string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                string valid = "1234567890";
                 StringBuilder oneUsePass = new StringBuilder();
-                int len = 10;
+                int len = 4;
                 Random rnd = new Random();
                 while (0 < len--)
                 {
                     oneUsePass.Append(valid[rnd.Next(valid.Length)]);
                 }
 
+
                 var email = new MimeMessage();
                 email.From.Add(new MailboxAddress("SmartLists", "smartlists@gmail.com"));
-                email.To.Add(new MailboxAddress("אני", to));
+                email.To.Add(new MailboxAddress(user.Name, to));
 
                 email.Subject = subject;
                 email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
                 {
-                    Text = oneUsePass.ToString() + " :הסיסמא החד פעמית היא"
+                    Text = $"<div> הסיסמה הזמנית הוא: {oneUsePass}</div>"
                 };
 
-
+               
                 using (var s = new SmtpClient())
                 {
                     s.CheckCertificateRevocation = false;
                     s.Connect("smtp.gmail.com", 587, false);
-                    s.Authenticate("smartlists@gmail.com", "ykhpqfvfuujohyeb");
+                    s.Authenticate("smartlists.com@gmail.com", "yohbofzeutsmsnku");
                     s.Send(email);
                     s.Disconnect(true);
                 }
 
                 //שמירת הסיסמא החדשה אצל הבן אדם
-                userDal.SaveOneUsePassword(to, oneUsePass.ToString());
+                userDal.SaveOneUsePassword( oneUsePass.ToString(),to);
                 return true;
             }
             return false;
