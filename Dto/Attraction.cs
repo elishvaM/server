@@ -31,11 +31,16 @@ public partial class AttractionDto
 
     public string Type { get; set; }
 
+    public int PersonStateId { get; set; }
+
     public AddressDto Address { get; set; }
 
-    //public PersonStateDto PersonState { get; set; } = null!;
+    public int CountryId { get; set; }
 
-    //public AttractionTypeDto Type { get; set; } = null!;
+
+
+
+
 
 
 }

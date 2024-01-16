@@ -17,8 +17,8 @@ namespace Dal
         }
         public Attraction Add(Attraction attraction)
         {
+            attraction.Status = true;
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
-           
             ElishevaMHadasBListsTripContext.SaveChanges();
             return attraction;
         }
@@ -55,6 +55,8 @@ namespace Dal
             a.Name = attraction.Name;
             a.Desc = attraction.Desc;
             a.Img = attraction.Img;
+            a.Img2= attraction.Img2;
+            a.Img3= attraction.Img3;    
             a.Type = attraction.Type;
             a.WebsiteAddress = attraction.WebsiteAddress;
             a.Address = attraction.Address;

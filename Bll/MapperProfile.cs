@@ -19,12 +19,12 @@ namespace Bll
             CreateMap<User, FullUser>();
             CreateMap<UserDto, User>();
             CreateMap<Attraction, AttractionDto>()
-                .ForMember(u => u.Type, y => y.MapFrom(t => t.Type.Type))
+              .ForMember(u => u.Type, y => y.MapFrom(t => t.Type.Type))
                 .ForMember(u => u.State, y => y.MapFrom(t => t.PersonState.State));
-            CreateMap<AttractionDto, Attraction>();
+            CreateMap<AttractionDto, Attraction>()
             //.ForMember(a => a.Address, y => y.MapFrom(t => t.Address))
-            //.ForMember(a => a.Type, y => y.MapFrom(t => t.Type))
-            //.ForMember(a => a.PersonState, y => y.MapFrom(t => t.PersonState));
+            .ForMember(a => a.Type, y => y.MapFrom(t => t.Type))
+            .ForMember(a => a.PersonState, y => y.MapFrom(t => t.State));
 
             CreateMap<Product, ProductDto>()
                 .ForMember(a => a.StorageType, y => y.MapFrom(t => t.StorageType.Type))
