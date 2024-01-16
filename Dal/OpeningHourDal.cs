@@ -50,8 +50,6 @@ namespace Dal
                 this.ElishevaMHadasBListsTripContext.OpeningHours.Add
                     (openingHour);
                 this.ElishevaMHadasBListsTripContext.SaveChanges();
-
-
             }
         }
     }

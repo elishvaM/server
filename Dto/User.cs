@@ -37,5 +37,8 @@ public partial class UserDto
     public bool Status { get; set; }=true;
 
     public string Type { get; set; } = "משתמש";
+
+    public string? OneTimePassword { get; set; }
+
 }
 

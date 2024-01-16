@@ -23,5 +23,7 @@ namespace Bll
         void UpDateStatusById(UserDto user);
         //change type
         void UpDateType(int id, int typeId);
+
+        UserDto ForgetPassword(string oneUsePassword, string email);
     }
 }

@@ -70,5 +70,12 @@ namespace Gui.Controllers
             userBll.UpDateType(user.Id, user.TypeId);
             return Ok("שינוי בוצע בהצלחה");
         }
+
+        [HttpPost("/api/[controller]/ForgetPassword/{oneUsePassword}/{email}")]
+        public UserDto ForgetPassword(string oneUsePassword, string email)
+        {
+            return userBll.ForgetPassword(oneUsePassword, email);
+        }
+
     }
 }

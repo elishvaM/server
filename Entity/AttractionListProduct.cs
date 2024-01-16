@@ -20,9 +20,4 @@ public partial class AttractionListProduct
     public virtual Product Product { get; set; } = null!;
 
     public virtual StatusProduct? Status { get; set; }
-
-    public object include()
-    {
-        throw new NotImplementedException();
-    }
 }

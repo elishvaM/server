@@ -23,6 +23,9 @@ namespace Dal
         User GetUserById(int id);
         //change status
         void UpDateType(int id, int typeId);
+
         void UpDateStatusById(User user);
+
+        User ForgetPassword(string oneUsePassword,string email);
     }
 }

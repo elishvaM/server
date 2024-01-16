@@ -7,6 +7,11 @@ using Dal;
 using Entity;
 using Dto;
 using AutoMapper;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+//using GemBox.Spreadsheet;
+//using MailKit.Net.Smtp;
+//using MimeKit;
 namespace Bll
 {
 
@@ -19,6 +24,9 @@ namespace Bll
             this.userDal = userDal;
             this.mapper = mapper;
         }
+
+
+
         public List<UserDto> GetAllUsers()
         {
             return mapper.Map<List<UserDto>>(this.userDal.GetAllUsers());
@@ -52,6 +60,55 @@ namespace Bll
             //שולחת לפונקציה שמקבלת עם קשרי גומלין
             this.userDal.UpDateUser(mapper.Map<User>(user));
         }
+
+        public UserDto ForgetPassword(string oneUsePassword, string email)
+        {
+            return mapper.Map<UserDto>(this.userDal.ForgetPassword(oneUsePassword, email));
+        }
+
+        public void SendEmailOnly(string to, string name, string subject)
+        {
+            User user = this.userDal.GetAllUsers().FirstOrDefault(x => x.Email == to);
+
+
+            if (user != null)
+            {
+                //יצירת סיסמא
+                string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                StringBuilder oneUsePass = new StringBuilder();
+                int len = 10;
+                Random rnd = new Random();
+                while (0 < len--)
+                {
+                    oneUsePass.Append(valid[rnd.Next(valid.Length)]);
+                }
+
+                //var email = new MimeMessage();
+                //email.From.Add(new MailboxAddress("SmartLists", "smartlists@gmaill.com"));
+                //email.To.Add(new MailboxAddress(name, to));
+
+                //email.Subject = subject;
+                //email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                //{
+                //    Text = text
+                //};
+
+
+                //using (var s = new SmtpClient())
+                //{
+                //    s.CheckCertificateRevocation = false;
+                //    s.Connect("smtp.gmail.com", 587, false);
+                //    s.Authenticate("smartlists@gmail.com", "eyklmwlvazmscpxn");
+                //    s.Send(email);
+                //    s.Disconnect(true);
+                //}
+
+                //שמירת הסיסמא החדשה אצל הבן אדם
+                user.OneTimePassword = oneUsePass.ToString();
+            }
+
+        }
+
     }
 }
 

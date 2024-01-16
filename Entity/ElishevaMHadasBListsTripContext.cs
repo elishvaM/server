@@ -353,6 +353,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
             entity.Property(e => e.DateBorn).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.OneTimePassword).HasMaxLength(10);
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(15);
 
