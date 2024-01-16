@@ -28,9 +28,10 @@ namespace Bll
             return mapper.Map<List<OpeningHourDto>>(this.openingHoureDal.Get(id));
         }
 
-        public void Update(OpeningHourDto openingHour)
+        public OpeningHourDto Update(OpeningHourDto openingHour)
         {
-            openingHoureDal.Update(mapper.Map<OpeningHour>(openingHour));
+            var data = openingHoureDal.Update(mapper.Map<OpeningHour>(openingHour));
+            return mapper.Map<OpeningHourDto>(data);
         }
     }
 }

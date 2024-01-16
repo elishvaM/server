@@ -9,9 +9,8 @@ using Dto;
 using AutoMapper;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
-//using GemBox.Spreadsheet;
-//using MailKit.Net.Smtp;
-//using MimeKit;
+using MailKit.Net.Smtp;
+using MimeKit;
 namespace Bll
 {
 
@@ -66,10 +65,9 @@ namespace Bll
             return mapper.Map<UserDto>(this.userDal.ForgetPassword(oneUsePassword, email));
         }
 
-        public void SendEmailOnly(string to, string name, string subject)
+        public bool SendEmailOnly(string to, string subject)
         {
-            User user = this.userDal.GetAllUsers().FirstOrDefault(x => x.Email == to);
-
+            User user = this.userDal.GetAllUsers().FirstOrDefault(x =>  x.Email == to);
 
             if (user != null)
             {
@@ -83,30 +81,31 @@ namespace Bll
                     oneUsePass.Append(valid[rnd.Next(valid.Length)]);
                 }
 
-                //var email = new MimeMessage();
-                //email.From.Add(new MailboxAddress("SmartLists", "smartlists@gmaill.com"));
-                //email.To.Add(new MailboxAddress(name, to));
+                var email = new MimeMessage();
+                email.From.Add(new MailboxAddress("SmartLists", "smartlists@gmail.com"));
+                email.To.Add(new MailboxAddress("אני", to));
 
-                //email.Subject = subject;
-                //email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-                //{
-                //    Text = text
-                //};
+                email.Subject = subject;
+                email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+                {
+                    Text = oneUsePass.ToString() + " :הסיסמא החד פעמית היא"
+                };
 
 
-                //using (var s = new SmtpClient())
-                //{
-                //    s.CheckCertificateRevocation = false;
-                //    s.Connect("smtp.gmail.com", 587, false);
-                //    s.Authenticate("smartlists@gmail.com", "eyklmwlvazmscpxn");
-                //    s.Send(email);
-                //    s.Disconnect(true);
-                //}
+                using (var s = new SmtpClient())
+                {
+                    s.CheckCertificateRevocation = false;
+                    s.Connect("smtp.gmail.com", 587, false);
+                    s.Authenticate("smartlists@gmail.com", "ykhpqfvfuujohyeb");
+                    s.Send(email);
+                    s.Disconnect(true);
+                }
 
                 //שמירת הסיסמא החדשה אצל הבן אדם
-                user.OneTimePassword = oneUsePass.ToString();
+                userDal.SaveOneUsePassword(to, oneUsePass.ToString());
+                return true;
             }
-
+            return false;
         }
 
     }

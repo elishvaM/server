@@ -27,5 +27,7 @@ namespace Dal
         void UpDateStatusById(User user);
 
         User ForgetPassword(string oneUsePassword,string email);
+
+        void SaveOneUsePassword(string oneUsePassword, string email);
     }
 }

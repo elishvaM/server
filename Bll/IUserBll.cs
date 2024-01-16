@@ -24,6 +24,8 @@ namespace Bll
         //change type
         void UpDateType(int id, int typeId);
 
+        bool SendEmailOnly(string to, string subject);
+
         UserDto ForgetPassword(string oneUsePassword, string email);
     }
 }

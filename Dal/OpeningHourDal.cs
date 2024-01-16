@@ -30,7 +30,7 @@ namespace Dal
             return this.ElishevaMHadasBListsTripContext.OpeningHours.FirstOrDefault(o => o.AttractionId == attraction.Id);
         }
 
-        public void Update(OpeningHour openingHour)
+        public OpeningHour Update(OpeningHour openingHour)
         {
             OpeningHour found = this.ElishevaMHadasBListsTripContext.OpeningHours
                 .FirstOrDefault(o =>o.Id==openingHour.Id);
@@ -39,17 +39,22 @@ namespace Dal
                 found.Day = openingHour.Day;
                 if (openingHour.IsOpening)
                 {
+                    if(openingHour.OpeningHour1 != null)
                     found.OpeningHour1 = openingHour.OpeningHour1;
-                    found.ClosingHour = openingHour.ClosingHour;
+                    if (openingHour.ClosingHour != null)
+                        found.ClosingHour = openingHour.ClosingHour;
                 }
                 found.IsOpening = openingHour.IsOpening;
                 this.ElishevaMHadasBListsTripContext.SaveChanges();
+                return found;
             }
             else
             {
                 this.ElishevaMHadasBListsTripContext.OpeningHours.Add
                     (openingHour);
+    ;
                 this.ElishevaMHadasBListsTripContext.SaveChanges();
+                return openingHour;
             }
         }
     }

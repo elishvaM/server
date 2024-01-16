@@ -10,6 +10,6 @@ namespace Bll
     {
         public List<OpeningHourDto> Get(int id);
         public OpeningHourDto Get(AttractionDto attraction);
-        public void Update(OpeningHourDto openingHour);
+        public OpeningHourDto Update(OpeningHourDto openingHour);
     }
 }

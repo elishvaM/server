@@ -10,7 +10,7 @@ namespace Dal
     {
         public OpeningHour Get(Attraction attraction);
         public List<OpeningHour> Get(int id);
-        public void Update(OpeningHour openingHour);
+        public OpeningHour Update(OpeningHour openingHour);
         public void Add(OpeningHour openingHour);
     }
 }

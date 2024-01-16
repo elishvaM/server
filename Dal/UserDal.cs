@@ -71,5 +71,12 @@ namespace Dal
         {
             return this.ElishevaMHadasBListsTripContext.Users.First(x => x.Email == email && x.OneTimePassword == oneUsePassword);
         }
+
+        public void SaveOneUsePassword(string oneUsePassword, string email)
+        {
+            User foundUser = this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email == email);
+            foundUser.OneTimePassword = oneUsePassword;
+            this.ElishevaMHadasBListsTripContext.SaveChanges();
+        }
     }
 }

@@ -26,9 +26,10 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/Update")]
-        public void Update(OpeningHourDto o)
+        public OpeningHourDto Update(OpeningHourDto o)
         {
-            openingHourBll.Update(o);
+          o= openingHourBll.Update(o);
+            return o;
         }
 
         //[HttpPost("/api/[controller]/Add")]

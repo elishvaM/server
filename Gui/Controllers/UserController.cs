@@ -35,8 +35,9 @@ namespace Gui.Controllers
         [HttpPost("/api/[controller]/SignIn")]
         public ActionResult SignIn([FromBody] FullUser user)
         {
-            if (userBll.GetAllUsers().Contains(user))
-                return BadRequest("משתמש זה קיים");
+            UserDto u = userBll.GetAllUsers().FirstOrDefault(x => x.Email == user.Email);
+            if (u != null)
+                return BadRequest("מייל כבר קיים במערכת");
             int id = userBll.SignInUser(user);
             UserDto signed = userBll.GetUserById(id);
             return Ok(signed);
@@ -75,6 +76,14 @@ namespace Gui.Controllers
         public UserDto ForgetPassword(string oneUsePassword, string email)
         {
             return userBll.ForgetPassword(oneUsePassword, email);
+        }
+
+        [HttpPost("/api/[controller]/SendEmail/{to}/{subject}")]
+        public ActionResult SendEmail(string to, string subject)
+        {
+            if (userBll.SendEmailOnly(to, subject))
+                return Ok("הסיסמא נשלחה");
+            return Ok("מייל לא קיים במערכת");
         }
 
     }
