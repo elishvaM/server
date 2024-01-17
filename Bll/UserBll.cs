@@ -38,9 +38,9 @@ namespace Bll
         {
             return mapper.Map<FullUser>(this.userDal.LoginUser(mail, password));
         }
-        public int SignInUser(FullUser user)
+        public FullUser SignInUser(FullUser user)
         {
-            return this.userDal.SignInUser(mapper.Map<User>(user));
+            return mapper.Map<FullUser>(this.userDal.SignInUser(mapper.Map<User>(user)));
         }
 
         public void UpDateStatusById(UserDto user)
@@ -67,7 +67,7 @@ namespace Bll
 
         public bool SendEmailOnly(string to, string subject)
         {
-            User user = this.userDal.GetAllUsers().FirstOrDefault(x =>  x.Email.ToLower() == to.ToLower());
+            User user = this.userDal.GetAllUsers().FirstOrDefault(x => x.Email.ToLower() == to.ToLower());
 
             if (user != null)
             {
@@ -92,7 +92,7 @@ namespace Bll
                     Text = $"<div> הסיסמה הזמנית היא: {oneUsePass}</div>"
                 };
 
-               
+
                 using (var s = new SmtpClient())
                 {
                     s.CheckCertificateRevocation = false;
@@ -103,7 +103,7 @@ namespace Bll
                 }
 
                 //שמירת הסיסמא החדשה אצל הבן אדם
-                userDal.SaveOneUsePassword(oneUsePass.ToString(),to);
+                userDal.SaveOneUsePassword(oneUsePass.ToString(), to);
                 return true;
             }
             return false;

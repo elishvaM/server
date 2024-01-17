@@ -33,12 +33,11 @@ namespace Gui.Controllers
         [HttpPost("/api/[controller]/SignIn")]
         public ActionResult SignIn([FromBody] FullUser user)
         {
-            UserDto u = userBll.GetAllUsers().FirstOrDefault(x => x.Email == user.Email);
+            FullUser u = userBll.SignInUser(user);
             if (u != null)
-                return BadRequest("מייל כבר קיים במערכת");
-            int id = userBll.SignInUser(user);
-            UserDto signed = userBll.GetUserById(id);
-            return Ok(signed);
+                return Ok(u);
+            return BadRequest("מייל כבר קיים במערכת");
+           
         }
         //login
         [HttpPost("/api/[controller]/LogIn")]

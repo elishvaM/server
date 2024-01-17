@@ -10,7 +10,7 @@ namespace Bll
     { //thes the functions that will be excueted on the db
 
         //sign user
-        int SignInUser(FullUser user);
+        FullUser SignInUser(FullUser user);
         //login user
         FullUser LoginUser(string mail, string password);
         //get all users
