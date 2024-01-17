@@ -19,6 +19,12 @@ namespace Bll
             this.openingHoureDal = openingHoureDal;
             this.mapper = mapper;
         }
+
+        public void Delete(OpeningHourDto openingHour)
+        {
+           openingHoureDal.Delete(mapper.Map<OpeningHour>(openingHour));
+        }
+
         public OpeningHourDto Get(AttractionDto attraction)
         {
             return mapper.Map<OpeningHourDto>(openingHoureDal.Get(mapper.Map<Attraction>(attraction)));

@@ -12,6 +12,6 @@ namespace Dal
         public List<OpeningHour> Get(int id);
         public OpeningHour Update(OpeningHour openingHour);
         public void Add(OpeningHour openingHour);
-        public bool CheckIsValid(string openingHour,string closingHour);
+        public void Delete(OpeningHour openingHour);
     }
 }
