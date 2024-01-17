@@ -1,4 +1,5 @@
-﻿using Dto;
+﻿using Dal;
+using Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace Bll
         void Delete(int productId, int attractionListId);
         AttractionListProductDto Add(AttractionListProductDto attractionListProduct);
         List<AttractionListProductDto> AddList(List<AttractionListProductDto> attractionListProduct);
+        List<object> GetAllAttractionListProductByTripListIdId(int tripListId);
+
     }
 }

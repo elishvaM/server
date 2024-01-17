@@ -22,6 +22,12 @@ namespace Gui.Controllers
             return attractionListProductBll.GetByAttractionListId(attractionListId);
         }
 
+        [HttpGet("/api/[controller]/GetAllByTripListId/{tripListId}")]
+        public List<object> get(int tripListId)
+        {
+            return attractionListProductBll.GetAllAttractionListProductByTripListIdId(tripListId);
+        }
+
         [HttpPost("/api/[controller]/Add")]
         public AttractionListProductDto Add([FromBody] AttractionListProductDto attractionListProduct)
         {

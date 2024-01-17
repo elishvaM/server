@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Dal;
 using Dto;
 using Entity;
 using System;
@@ -13,6 +14,7 @@ namespace Bll
     {
         public MapperProfile()
         {
+
             CreateMap<User, UserDto>()
               .ForMember(u => u.Type, y => y.MapFrom(t => t.UserType.Type));
             CreateMap<FullUser, User>();
@@ -61,6 +63,9 @@ namespace Bll
             CreateMap<PersonState, PersonStateDto>();
             CreateMap<PersonStateDto, PersonState>();
             //כאן יתווספו כל הטבלאות
+            
+           
         }
+  
     }
 }

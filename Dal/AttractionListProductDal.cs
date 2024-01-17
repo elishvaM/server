@@ -45,5 +45,45 @@ namespace Dal
                 .Include(x => x.Product).ThenInclude(x => x.ProductType)
                 .ToList();
         }
+        public List<keyCount> GetAllAttractionListProductByTripListIdId(int tripListId)
+        {
+            //return ElishevaMHadasBListsTripContext.AttractionListProducts.Where(x => x.AttractionList.TripList.Id == tripListId)
+            //    .Include(x => x.Product).ThenInclude(x => x.StorageType)
+            //    .Include(x => x.Product).ThenInclude(x => x.ProductType)
+            //    .GroupBy(x => x.Product).Select(y =>
+            //    new keyCount() { Key = y.Key.Name,
+            //        Product = y.Key, Sum = y.Key.IsDuplicated ? y.Sum(x => x.Amount) : y.ToList().Max(x => x.Amount)
+
+            //    }).ToList();
+
+
+            var a = ElishevaMHadasBListsTripContext.AttractionListProducts.Where(x => x.AttractionList.TripList.Id == tripListId)
+            .Include(x => x.Product).ThenInclude(x => x.StorageType)
+            .Include(x => x.Product).ThenInclude(x => x.ProductType)
+            .GroupBy(x => x.Product)
+            .ToList()//need it bacause just like this it get the include()
+            .Select(y=>y)
+            .ToList();
+            List<keyCount> all = new List<keyCount>(); 
+            foreach (var y in a)
+            {
+                all.Add(new keyCount()
+                {
+                    Key = y.Key.Name,
+                    Product = y.Key,
+                    Sum = y.Key.IsDuplicated ? y.Sum(x => x.Amount) : y.ToList().Max(x => x.Amount)
+                });
+            };
+            return all;
+
+
+        }
     }
+    public class keyCount
+    {
+        public string Key { get; set; }
+        public int Sum { get; set; }
+        public Product Product { get; set; }
+    }
+
 }

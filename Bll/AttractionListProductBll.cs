@@ -2,9 +2,11 @@
 using Dal;
 using Dto;
 using Entity;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +35,19 @@ namespace Bll
         public void Delete(int productId, int attractionListId)
         {
             attractionListProductDal.Delete(productId, attractionListId);
+        }
+
+        public List<object> GetAllAttractionListProductByTripListIdId(int tripListId)
+        {
+            // return mapper.Map<List<keyCountDto>>(attractionListProductDal.GetAllAttractionListProductByTripListIdId(tripListId));
+            List<keyCount> a = attractionListProductDal.GetAllAttractionListProductByTripListIdId(tripListId);
+            List<object> c = new List<object>();
+            foreach(keyCount b in a)
+            {
+                ProductDto productDto = mapper.Map<ProductDto>(b.Product);
+                c.Add(new { Key = b.Key, Sum=b.Sum, Product= productDto });
+            }
+            return c;
         }
 
         public List<AttractionListProductDto> GetByAttractionListId(int attractionListId)

@@ -23,11 +23,11 @@ public partial class AttractionDto
 
     public bool Status { get; set; }
 
-    public string State { get; set; }
+    public string? State { get; set; }
 
-    public string Type { get; set; }
+    public string? Type { get; set; }
 
-    public AddressDto Address { get; set; }
+    public AddressDto? Address { get; set; }
 
     //public PersonStateDto PersonState { get; set; } = null!;
 

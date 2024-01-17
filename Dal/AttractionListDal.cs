@@ -23,7 +23,6 @@ namespace Dal
                 .Include(x=>x.AttractionListProducts).ThenInclude(x=>x.Product).ThenInclude(x=>x.ProductType)
                 .ToList();
         }
-
         public List<AttractionList> GetAttractionListByUserId(int userId)
         {
             return ElishevaMHadasBListsTripContext.AttractionLists.ToList();

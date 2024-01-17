@@ -13,5 +13,7 @@ namespace Dal
         void Delete(int productId , int attractionListId);
         AttractionListProduct Add(AttractionListProduct attractionListProduct);
         List<AttractionListProduct> AddList(List<AttractionListProduct> attractionListProduct);
+        List<keyCount> GetAllAttractionListProductByTripListIdId(int tripListId);
+ 
     }
 }
