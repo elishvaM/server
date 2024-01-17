@@ -33,7 +33,7 @@ public partial class AttractionDto
 
     public string State { get; set; }
 
-    public string Type { get; set; }
+    public string Type1 { get; set; }
 
 
 
