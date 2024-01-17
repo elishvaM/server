@@ -71,7 +71,7 @@ namespace Gui.Controllers
         }
 
         [HttpPost("/api/[controller]/ForgetPassword/{oneUsePassword}/{email}")]
-        public UserDto ForgetPassword(string oneUsePassword, string email)
+        public FullUser ForgetPassword(string oneUsePassword, string email)
         {
             return userBll.ForgetPassword(oneUsePassword, email);
         }

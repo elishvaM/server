@@ -40,5 +40,12 @@ namespace Gui.Controllers
         {
             tripListBll.Delete(tripList);
         }
+
+        [HttpPost("/api/[controller]/SendEmail/{to}/{subject}")]
+        public ActionResult SendEmail(string to, string subject)
+        {
+            tripListBll.SendEmailOnly(to, subject);
+            return Ok("המייל נשלח");
+        }
     }
 }

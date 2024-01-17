@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Dal;
 using AutoMapper;
 using Entity;
+using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using MailKit.Net.Smtp;
+using MimeKit;
 namespace Bll
 {
     public class TripListBll : ITripListBll
@@ -38,5 +42,32 @@ namespace Bll
         {
             this.tripListDal.Update(mapper.Map<TripList>(tripList));
         }
+        public void SendEmailOnly(string to, string subject)
+        {
+            //to -מייל של מחובר מהלקוח
+            //subject- שולחים ידנית פשוט כמו רשימות הטיול
+            // User user = this.userDal.GetAllUsers().FirstOrDefault(x => x.Email.ToLower() == to.ToLower());
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("SmartLists", "smartlists@gmail.com"));
+            email.To.Add(new MailboxAddress("אני", to));
+           // email.To.Add(new MailboxAddress(user.Name, to));
+
+            email.Subject = subject;
+            email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = $"<div><h1>ץיכף תקבל את כל הרשימות שלך<h1></div>"
+            };
+
+            using (var s = new SmtpClient())
+            {
+                s.CheckCertificateRevocation = false;
+                s.Connect("smtp.gmail.com", 587, false);
+                s.Authenticate("smartlists.com@gmail.com", "yohbofzeutsmsnku");
+                s.Send(email);
+                s.Disconnect(true);
+            }
+
+        }
+
     }
 }

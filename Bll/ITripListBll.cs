@@ -16,5 +16,7 @@ namespace Bll
 
         void Delete(TripListDto tripList);
 
+        void SendEmailOnly(string to, string subject);
+
     }
 }

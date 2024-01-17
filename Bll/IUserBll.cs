@@ -26,6 +26,6 @@ namespace Bll
 
         bool SendEmailOnly(string to, string subject);
 
-        UserDto ForgetPassword(string oneUsePassword, string email);
+        FullUser ForgetPassword(string oneUsePassword, string email);
     }
 }

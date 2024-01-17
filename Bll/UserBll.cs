@@ -60,9 +60,9 @@ namespace Bll
             this.userDal.UpDateUser(mapper.Map<User>(user));
         }
 
-        public UserDto ForgetPassword(string oneUsePassword, string email)
+        public FullUser ForgetPassword(string oneUsePassword, string email)
         {
-            return mapper.Map<UserDto>(this.userDal.ForgetPassword(oneUsePassword, email));
+            return mapper.Map<FullUser>(this.userDal.ForgetPassword(oneUsePassword, email));
         }
 
         public bool SendEmailOnly(string to, string subject)
@@ -89,7 +89,7 @@ namespace Bll
                 email.Subject = subject;
                 email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
                 {
-                    Text = $"<div> הסיסמה הזמנית הוא: {oneUsePass}</div>"
+                    Text = $"<div> הסיסמה הזמנית היא: {oneUsePass}</div>"
                 };
 
                
@@ -103,7 +103,7 @@ namespace Bll
                 }
 
                 //שמירת הסיסמא החדשה אצל הבן אדם
-                userDal.SaveOneUsePassword( oneUsePass.ToString(),to);
+                userDal.SaveOneUsePassword(oneUsePass.ToString(),to);
                 return true;
             }
             return false;
