@@ -11,8 +11,6 @@ public partial class TripList
 
     public string? Name { get; set; }
 
-    public bool Status { get; set; }
-
     public DateTime AddingDate { get; set; }
 
     public DateTime BackingDate { get; set; }

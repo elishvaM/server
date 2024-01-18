@@ -15,8 +15,6 @@ public partial class AttractionList
 
     public bool IsBasic { get; set; }
 
-    public bool Status { get; set; }
-
     public DateTime RemainderDate { get; set; }
 
     public virtual Attraction Attraction { get; set; } = null!;

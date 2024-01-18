@@ -24,7 +24,8 @@ public partial class Product
     public int? UserId { get; set; }
 
     public string Name { get; set; } = null!;
-    public bool Status { get; set; }
+
+    public bool? Status { get; set; }
 
     public virtual ICollection<AttractionListProduct> AttractionListProducts { get; set; } = new List<AttractionListProduct>();
 

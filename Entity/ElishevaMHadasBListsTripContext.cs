@@ -61,7 +61,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-BL7BE4E;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=200;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-E8KT20TD\\SQLEXPRESS01;Initial Catalog=ElishevaM_HadasB_ListsTrip;Integrated Security=True;Connect Timeout=200;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -80,9 +80,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("Attraction");
 
-            entity.Property(e => e.Img).HasMaxLength(50);
-            entity.Property(e => e.Img2).HasMaxLength(50);
-            entity.Property(e => e.Img3).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.Address).WithMany(p => p.Attractions)
@@ -248,7 +245,6 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
             entity.ToTable("Product");
 
-            entity.Property(e => e.Img).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.ProductType).WithMany(p => p.Products)

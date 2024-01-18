@@ -19,7 +19,7 @@ namespace Dal
         public AttractionList Add(AttractionList attractionList)
         {
             attractionList.RemainderDate = DateTime.Now;
-            attractionList.Status = true;
+            //attractionList.Status = true;
             attractionList.IsBasic = false;
             ElishevaMHadasBListsTripContext.Add(attractionList);
             ElishevaMHadasBListsTripContext.SaveChanges();

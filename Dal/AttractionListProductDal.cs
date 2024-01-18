@@ -73,7 +73,7 @@ namespace Dal
             {
                 all.Add(new keyCount()
                 {
-                    StatusId = y.ToList().Max(x => x.StatusId),
+                    StatusId = (int)y.ToList().Max(x => x.StatusId),
                     //StatusName = y.Select(x => x.Status.Type).ToString(),///????
                     Key = y.Key.Name,
                     Product = y.Key,
