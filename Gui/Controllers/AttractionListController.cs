@@ -29,9 +29,11 @@ namespace Gui.Controllers
         }
 
         // POST api/<AttractionListController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("/api/[controller]/Add")]
+        public PostAttractionList Add([FromBody] PostAttractionList attractionList)
         {
+            attractionList= attractionListBll.Add(attractionList);
+            return attractionList;
         }
 
         // PUT api/<AttractionListController>/5

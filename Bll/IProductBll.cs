@@ -11,6 +11,7 @@ namespace Bll
     {
         List<ProductDto> GetAllProducts();
         int AddProduct(ProductDto p);
-
+        void Delete(int id);
+        void Update(ProductDto p);
     }
 }

@@ -35,6 +35,8 @@ builder.Services.AddScoped<IAttractionTypeBll, AttractionTypeBll>();
 builder.Services.AddScoped<IAttractionTypeDal, AttractionTypeDal>();
 builder.Services.AddScoped<IPersonStateBll, PersonStateBll>();
 builder.Services.AddScoped<IPersonStateDal, PersonStateDal>();
+builder.Services.AddScoped<IOpeningHourDal, OpeningHourDal>();
+builder.Services.AddScoped<IOpeningHourBll, OpeningHourBll>();
 builder.Services.AddHttpContextAccessor();
 //הוספת ה database
 builder.Services.AddDbContext<ElishevaMHadasBListsTripContext>();

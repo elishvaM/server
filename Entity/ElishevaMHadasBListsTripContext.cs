@@ -81,6 +81,8 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
             entity.ToTable("Attraction");
 
             entity.Property(e => e.Img).HasMaxLength(50);
+            entity.Property(e => e.Img2).HasMaxLength(50);
+            entity.Property(e => e.Img3).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
 
             entity.HasOne(d => d.Address).WithMany(p => p.Attractions)
@@ -225,10 +227,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
 
         modelBuilder.Entity<OpeningHour>(entity =>
         {
-            entity.Property(e => e.ClosingHour).HasColumnType("datetime");
-            entity.Property(e => e.OpeningHour1)
-                .HasColumnType("datetime")
-                .HasColumnName("OpeningHour");
+            entity.Property(e => e.OpeningHour1).HasColumnName("OpeningHour");
 
             entity.HasOne(d => d.Attraction).WithMany(p => p.OpeningHours)
                 .HasForeignKey(d => d.AttractionId)
@@ -356,6 +355,7 @@ public partial class ElishevaMHadasBListsTripContext : DbContext
             entity.Property(e => e.DateBorn).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.OneTimePassword).HasMaxLength(10);
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(15);
 

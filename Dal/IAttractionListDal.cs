@@ -11,6 +11,7 @@ namespace Dal
     {
         List<AttractionList> GetAttractionListByUserId(int userId);
         List<AttractionList> GetAttractionListByAttractionId(int attractionId, int myattractionList);
+        AttractionList Add(AttractionList attractionList);
 
     }
 }

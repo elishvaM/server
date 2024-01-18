@@ -21,6 +21,8 @@ public partial class User
 
     public bool Status { get; set; }
 
+    public string? OneTimePassword { get; set; }
+
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual ICollection<ComplainedComment> ComplainedComments { get; set; } = new List<ComplainedComment>();

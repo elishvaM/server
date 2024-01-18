@@ -11,6 +11,7 @@ namespace Dal
     {
         List<Product> GetAllProducts();
         int AddProduct(Product p);
-
+        void Delete(int id);
+        void Update(Product p);
     }
 }

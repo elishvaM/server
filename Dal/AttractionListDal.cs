@@ -16,6 +16,15 @@ namespace Dal
             this.ElishevaMHadasBListsTripContext = context;
         }
 
+        public AttractionList Add(AttractionList attractionList)
+        {
+            attractionList.RemainderDate = DateTime.Now;
+            attractionList.Status = true;
+            attractionList.IsBasic = false;
+            ElishevaMHadasBListsTripContext.Add(attractionList);
+            ElishevaMHadasBListsTripContext.SaveChanges();
+            return attractionList;
+        }
         public List<AttractionList> GetAttractionListByAttractionId(int attractionId, int myattractionList)
         {
             return ElishevaMHadasBListsTripContext.AttractionLists.Where(x=>x.AttractionId == attractionId && x.Id!= myattractionList)

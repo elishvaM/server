@@ -18,6 +18,7 @@ public partial class TripListDto
     public DateTime TravelingDate { get; set; }
 
     public int CounAtraction { get; set; }
+    public bool Status { get; set; }
 
     //קישור לרשימות אטרקציות הטיול
     public List<AttractionListDto>? AttractionList { get; set; }

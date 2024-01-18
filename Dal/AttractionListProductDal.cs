@@ -34,8 +34,11 @@ namespace Dal
         public void Delete(int productId, int attractionListId)
         {
             AttractionListProduct x = ElishevaMHadasBListsTripContext.AttractionListProducts.FirstOrDefault(x => x.AttractionListId == attractionListId && x.ProductId == productId);
-            ElishevaMHadasBListsTripContext.AttractionListProducts.Remove(x);
-            ElishevaMHadasBListsTripContext.SaveChanges();
+            if (x != null)
+            {
+                ElishevaMHadasBListsTripContext.AttractionListProducts.Remove(x);
+                ElishevaMHadasBListsTripContext.SaveChanges();
+            }
         }
 
         public List<AttractionListProduct> GetByAttractionListId(int attractionListId)
@@ -58,6 +61,7 @@ namespace Dal
 
 
             var a = ElishevaMHadasBListsTripContext.AttractionListProducts.Where(x => x.AttractionList.TripList.Id == tripListId)
+            .Include(x => x.Status).ThenInclude(x => x.Type)
             .Include(x => x.Product).ThenInclude(x => x.StorageType)
             .Include(x => x.Product).ThenInclude(x => x.ProductType)
             .GroupBy(x => x.Product)
@@ -69,6 +73,8 @@ namespace Dal
             {
                 all.Add(new keyCount()
                 {
+                    StatusId = y.ToList().Max(x => x.StatusId),
+                    //StatusName = y.Select(x => x.Status.Type).ToString(),///????
                     Key = y.Key.Name,
                     Product = y.Key,
                     Sum = y.Key.IsDuplicated ? y.Sum(x => x.Amount) : y.ToList().Max(x => x.Amount)
@@ -82,6 +88,8 @@ namespace Dal
     public class keyCount
     {
         public string Key { get; set; }
+        public int StatusId { get; set; }
+        //public string StatusName { get; set; }
         public int Sum { get; set; }
         public Product Product { get; set; }
     }

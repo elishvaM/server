@@ -15,11 +15,12 @@ namespace Dal
         {
             this.ElishevaMHadasBListsTripContext = context;
         }
-        public int Add(Attraction attraction)
+        public Attraction Add(Attraction attraction)
         {
+            attraction.Status = true;
             this.ElishevaMHadasBListsTripContext.Attractions.Add(attraction);
             ElishevaMHadasBListsTripContext.SaveChanges();
-            return attraction.Id;
+            return attraction;
         }
         public List<Attraction> GetAll()
         {
@@ -34,7 +35,6 @@ namespace Dal
 
         public List<Attraction> GetFavorites()
         {
-            //לא צריך לפי איידי?
             return this.ElishevaMHadasBListsTripContext.Attractions.Include(x => x.Address).OrderByDescending(x =>x.AttractionLists.Count()).Take(2).ToList();
         }
 
@@ -44,6 +44,8 @@ namespace Dal
             a.Name = attraction.Name;
             a.Desc = attraction.Desc;
             a.Img = attraction.Img;
+            a.Img2= attraction.Img2;
+            a.Img3= attraction.Img3;    
             a.Type = attraction.Type;
             a.WebsiteAddress = attraction.WebsiteAddress;
             a.Address = attraction.Address;

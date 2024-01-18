@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Dal;
 using Dto;
-using System;
+using Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +17,11 @@ namespace Bll
         {
             this.attractionListDal = attractionListDal;
             this.mapper = mapper;
+        }
+
+        public PostAttractionList Add(PostAttractionList attractionList)
+        {
+            return mapper.Map<PostAttractionList>(attractionListDal.Add(mapper.Map<AttractionList>(attractionList)));
         }
 
         public List<AttractionListDto> GetAttractionListByAttractionId(int attractionId, int myattractionList)

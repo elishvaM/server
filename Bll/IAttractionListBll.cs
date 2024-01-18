@@ -11,5 +11,6 @@ namespace Bll
     {
         List<AttractionListDto> GetAttractionListByUserId(int userId);
         List<AttractionListDto> GetAttractionListByAttractionId(int attractionId, int myattractionList);
+        PostAttractionList Add(PostAttractionList attractionList);
     }
 }

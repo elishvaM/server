@@ -13,6 +13,10 @@ public partial class AttractionDto
 
     public string Img { get; set; } = null!;
 
+    public string? Img2 { get; set; }
+
+    public string? Img3 { get; set; }
+
     public string WebsiteAddress { get; set; } = null!;
 
     public bool IsConfirm { get; set; }
@@ -29,9 +33,12 @@ public partial class AttractionDto
 
     public AddressDto? Address { get; set; }
 
-    //public PersonStateDto PersonState { get; set; } = null!;
+    public int CountryId { get; set; }
 
-    //public AttractionTypeDto Type { get; set; } = null!;
+
+
+
+
 
 
 }

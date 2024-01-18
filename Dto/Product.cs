@@ -25,10 +25,10 @@ public partial class ProductDto
 
     public bool IsConfirm { get; set; }
 
-    public int UserId { get; set; }
+    public int? UserId { get; set; } 
 
     public string Name { get; set; } = null!;
 
-    public int StatusId { get; set; }
+    public bool Status { get; set; }
 
 }

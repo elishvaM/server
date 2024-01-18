@@ -25,12 +25,11 @@ namespace Gui.Controllers
             return attractionBll.GetById(id);
         }
 
-        [HttpGet("/api/[controller]/Add")]
+        [HttpPost("/api/[controller]/Add")]
         public AttractionDto Add([FromBody] AttractionDto a)
         {
-            int id = attractionBll.Add(a);
-            AttractionDto add = attractionBll.GetById(id);
-            return add;
+            a = attractionBll.Add(a);
+            return a;
         }
 
         [HttpPost("/api/[controller]/Update/attraction")]
@@ -44,7 +43,7 @@ namespace Gui.Controllers
         //{
         //    attractionBll.UpdateStatusById(id);
         //}
-        
+
         [HttpGet("/api/[controller]/GetFavorites")]
         public List<AttractionDto> GetFavorites()
         {

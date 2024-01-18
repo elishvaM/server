@@ -28,5 +28,15 @@ namespace Bll
         {
             return this.productDal.AddProduct(mapper.Map<Product>(p));
         }
+
+        public void Delete(int id)
+        {
+            productDal.Delete(id);
+        }
+
+        public void Update(ProductDto p)
+        {
+            productDal.Update(mapper.Map<Product>(p));
+        }
     }
 }
