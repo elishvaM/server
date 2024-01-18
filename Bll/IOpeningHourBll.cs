@@ -11,5 +11,7 @@ namespace Bll
         public List<OpeningHourDto> Get(int id);
         public OpeningHourDto Get(AttractionDto attraction);
         public OpeningHourDto Update(OpeningHourDto openingHour);
+        public void Delete(OpeningHourDto openingHour);
+
     }
 }

@@ -38,9 +38,9 @@ namespace Bll
         {
             return mapper.Map<FullUser>(this.userDal.LoginUser(mail, password));
         }
-        public int SignInUser(FullUser user)
+        public FullUser SignInUser(FullUser user)
         {
-            return this.userDal.SignInUser(mapper.Map<User>(user));
+            return mapper.Map<FullUser>(this.userDal.SignInUser(mapper.Map<User>(user)));
         }
 
         public void UpDateStatusById(UserDto user)
@@ -60,14 +60,14 @@ namespace Bll
             this.userDal.UpDateUser(mapper.Map<User>(user));
         }
 
-        public UserDto ForgetPassword(string oneUsePassword, string email)
+        public FullUser ForgetPassword(string oneUsePassword, string email)
         {
-            return mapper.Map<UserDto>(this.userDal.ForgetPassword(oneUsePassword, email));
+            return mapper.Map<FullUser>(this.userDal.ForgetPassword(oneUsePassword, email));
         }
 
         public bool SendEmailOnly(string to, string subject)
         {
-            User user = this.userDal.GetAllUsers().FirstOrDefault(x =>  x.Email.ToLower() == to.ToLower());
+            User user = this.userDal.GetAllUsers().FirstOrDefault(x => x.Email.ToLower() == to.ToLower());
 
             if (user != null)
             {
@@ -89,10 +89,10 @@ namespace Bll
                 email.Subject = subject;
                 email.Body = new TextPart(MimeKit.Text.TextFormat.Html)
                 {
-                    Text = $"<div> הסיסמה הזמנית הוא: {oneUsePass}</div>"
+                    Text = $"<div> הסיסמה הזמנית היא: {oneUsePass}</div>"
                 };
 
-               
+
                 using (var s = new SmtpClient())
                 {
                     s.CheckCertificateRevocation = false;
@@ -103,7 +103,7 @@ namespace Bll
                 }
 
                 //שמירת הסיסמא החדשה אצל הבן אדם
-                userDal.SaveOneUsePassword( oneUsePass.ToString(),to);
+                userDal.SaveOneUsePassword(oneUsePass.ToString(), to);
                 return true;
             }
             return false;

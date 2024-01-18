@@ -13,31 +13,27 @@ namespace Gui.Controllers
         {
             this.openingHourBll = openingHourBll;
         }
-        //???שגיאה על מיפו
-        //[HttpPost("/api/[controller]/Get/attraction")]
-        //public OpeningHourDto Get([FromBody] AttractionDto attraction)
-        //{
-        //    return openingHourBll.Get(attraction);
-        //}
         [HttpPost("/api/[controller]/Get/{id}")]
-        public List<OpeningHourDto> Get( int id)
+        public List<OpeningHourDto> Get(int id)
         {
             return openingHourBll.Get(id);
         }
 
         [HttpPost("/api/[controller]/Update")]
-        public OpeningHourDto Update(OpeningHourDto o)
+        public ActionResult Update(OpeningHourDto o)
         {
-          o= openingHourBll.Update(o);
-            return o;
+            o = openingHourBll.Update(o);
+            if (o == null)
+                return BadRequest("קיימת שעת פתיחה כזו באותו היום או שעות לא תקינות");
+            return Ok(o);
         }
 
-        //[HttpPost("/api/[controller]/Add")]
-        //public OpeningHourDto Add(OpeningHourDto o)
-        //{
-
-        //}
-
+        [HttpPost("/api/[controller]/Delete")]
+        public List<OpeningHourDto> Delete(OpeningHourDto openingHour)
+        {
+            openingHourBll.Delete(openingHour);
+            return openingHourBll.Get(openingHour.AttractionId);
+        }
 
     }
 }

@@ -12,7 +12,7 @@ namespace Dal
         //thes the functions that will be excueted on the db
 
         //sign user
-        int SignInUser(User user);
+        User SignInUser(User user);
         //login user
         User LoginUser(string mail, string password);
         //get all users

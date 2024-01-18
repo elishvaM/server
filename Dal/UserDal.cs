@@ -26,18 +26,19 @@ namespace Dal
         }
         public User LoginUser(string email, string password)
         {
-            return this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
+            return this.ElishevaMHadasBListsTripContext.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower() && x.Password == password);
         }
-        public int SignInUser(User user)
+        public User SignInUser(User user)
         {
+            if (this.ElishevaMHadasBListsTripContext.Users.Any(x => x.Email == user.Email))
+                return null;
             user.UserTypeId = 1;
             user.Status = true;
             //change
             this.ElishevaMHadasBListsTripContext.Users.Add(user);
             //svae
             this.ElishevaMHadasBListsTripContext.SaveChanges();
-            //כדי לקבל את האיידי
-            return user.Id;
+            return user;
         }
 
         public void UpDateStatusById(User user)
